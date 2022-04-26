@@ -17,10 +17,6 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING
         },
 
-        gender: {
-            type: DataTypes.STRING,
-        },
-
         born: {
             type: DataTypes.DATE,
         },
