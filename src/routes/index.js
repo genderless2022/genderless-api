@@ -15,5 +15,9 @@ router.get('/idproducto', (req, res)=>{
     res.send('aqui va la id de los productos')
 })
 
+router.get('/idproducto', (req, res)=>{
+    res.send('aqui va la id de los productos')
+})
+
 
 module.exports = router;
