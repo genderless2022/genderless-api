@@ -11,6 +11,9 @@ router.get('/', (req, res)=>{
     res.send('hola mundo')
 })
 
+router.get('/productos', (req, res)=>{
+    res.send('aqui van los productos')
+})
 
 
 
