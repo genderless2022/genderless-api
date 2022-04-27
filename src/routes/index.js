@@ -11,8 +11,13 @@ const getProduct = require('./product.js');
 
 const postUser = require('./user');
 router.use('/usuario', postUser);
+
 const getUsers = require('./user');
 router.use('/usuarios', getUsers);
+
+const getUserInfo = require('./user');
+router.use('/usuario', getUserInfo);
+
 
 const postProduct = require('./product.js');
 
