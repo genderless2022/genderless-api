@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('product', {
+  sequelize.define('Product', {
     name: {
       type: DataTypes.STRING,
      
@@ -14,11 +14,11 @@ module.exports = (sequelize) => {
 
     },
    stock_by_size: {
-      type: DataTypes.JSONB
+      type: DataTypes.JSON
     },
     price: {
       type: DataTypes.FLOAT,
-      allowNull: false
+      
     },
 
     discount: {
@@ -30,6 +30,14 @@ module.exports = (sequelize) => {
       defaultValue: 'https://pixabay.com/es/vectors/camiseta-de-manga-corta-camisa-cima-34481'
 
     },
+    brand: {
+      type: DataTypes.STRING,
+    },
+    disabled: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+
+    }
     
   });
 };
