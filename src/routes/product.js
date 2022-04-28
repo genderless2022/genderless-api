@@ -6,9 +6,15 @@ const postProduct = require("../Controllers/ProductControllers/postProduct");
 const putProduct = require("../Controllers/ProductControllers/putProduct");
 const getProductByName = require("../Controllers/ProductControllers/nameProduct");
 const getProductById = require("../Controllers/ProductControllers/idProduct");
+const getProductMarca = require("../Controllers/ProductControllers/getMarcaFilter");
+const getPriceFilter = require("../Controllers/ProductControllers/getPrecioFilter");
+const productByCategory = require("../Controllers/ProductControllers/getCategoryFilter");
 
-router.get("/productId", getProductById);
-router.get("/getname", getProductByName);
+router.get("/categoria/:categoria", productByCategory)
+router.get("/price/:price", getPriceFilter)
+router.get("/marca/:marca", getProductMarca);
+router.get("/:id", getProductById);
+router.get("/", getProductByName);
 router.get('/', getProduct);
 router.post("/", postProduct);
 router.put("/putproduct", putProduct);

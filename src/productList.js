@@ -86,7 +86,7 @@ var data = [
         discount: 0,
         image: 'https://www.cristobalcolon.com/fullaccess/item21312foto95044.jpg',
         category: 'Campera',
-        brand: 'Y Tú Quique?', 
+        brand: 'Y Tú Quique', 
         disabled: false
     },
     {
@@ -97,7 +97,7 @@ var data = [
         discount: 0,
         image: 'https://www.cristobalcolon.com/fullaccess/item21308foto95031.jpg',
         category: 'Campera',
-        brand: 'Y Tú Quique?', 
+        brand: 'Y Tú Quique', 
         disabled: false
     },
     {
@@ -251,7 +251,7 @@ var data = [
         discount: 0,
         image: 'https://www.cristobalcolon.com/fullaccess/item21327foto95066.jpg',
         category: 'Campera',
-        brand: 'Y Tú Quique?', 
+        brand: 'Y Tú Quique', 
         disabled: false
     },
     {

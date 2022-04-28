@@ -1,15 +1,22 @@
 const { Product, Category } = require("../../db.js");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 const productByName = async (req, res) => {
-  let { name } = req.body;
-
+  let { name } = req.query;
+  console.log(name);
+  const nombre = name.charAt(0).toUpperCase() + name.slice(1);
   try {
-    const allProducts = await Product.findAll({
-      include: [{ model: Category }],
-    });
-    const productsFilter = allProducts.filter(el=>el.name.toLowerCase().includes(name.toLowerCase()))
-    if (productsFilter.length) {
-        res.status(200).send(productsFilter)
+    if (name.length > 2) {
+      const allProducts = await Product.findAll({
+        where: {
+          name: { [Op.like]: "%" + nombre + "%" },
+        },
+        include: [{ model: Category }],
+        raw: true,
+      });
+
+      res.status(200).send(allProducts);
     }
   } catch (error) {
     res.send(error);
