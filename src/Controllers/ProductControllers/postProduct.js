@@ -1,10 +1,10 @@
 const { Product, Category } = require('../../db.js')
 const postProduct = async (req, res, next) => {
 
-    const { name, description, stock_by_size, price, discount, image} = req.body
+    const { name, description, stock_by_size, price, discount, image, brand, disabled, category} = req.body
 
     try {
-        let productCreated = await Product.create({name, description, stock_by_size, price, discount, image});
+        let productCreated = await Product.create({name, description, stock_by_size, price, discount, image, brand, disabled, category});
 
         try {
             await Category.create({ name: category })
