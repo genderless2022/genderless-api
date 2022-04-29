@@ -30,5 +30,15 @@ router.put('/rol', putUserRol);
 
 const deleteUser = require('../Controllers/UserControllers/deleteUser');
 router.delete('/:email', deleteUser);
+router.get('/info', checkAuth, checkRoles(['admin', 'user']), getUserInfo);
+
+const addProductToFavorites = require('../Controllers/FavoritesControllers/addProductToFavorites');
+router.post('/favorites', addProductToFavorites);
+
+const getProductFromFavorites = require('../Controllers/FavoritesControllers/getProductFromFavorites');
+router.get('/favorites', getProductFromFavorites);
+
+const deleteProductFromFavorites = require('../Controllers/FavoritesControllers/deleteProductFromFavorites')
+router.delete('/favorites', deleteProductFromFavorites);
 
 module.exports = router;

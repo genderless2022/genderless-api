@@ -1,13 +1,13 @@
-const { Router } = require('express');
+const { Router } = require("express");
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-
 
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 const getProduct = require('./product.js');
+const getProductById = require("./product.js");
 
 const postUser = require('./user');
 router.use('/usuario', postUser);
@@ -36,14 +36,19 @@ router.use('/usuario', putUserRol);
 const deleteUser = require('./user');
 router.use('/usuario', deleteUser);
 
+router.use("/id", getProductById);
+router.use("/productos", getProduct);
 
-const postProduct = require('./product.js');
 
-const putProduct = require('./product.js');
+const addProductToFavorites = require('./user.js');
+router.use('/usuario', addProductToFavorites);
 
-router.use('/productos', getProduct);
-router.use('/productos', postProduct);
-router.use('/productos', putProduct);
+const getProductFromFavorites = require('./user.js');
+router.use('/usuario', getProductFromFavorites);
+
+const deleteProductFromFavorites = require('./user.js');
+router.use('/usuario', deleteProductFromFavorites);
+
+
 
 module.exports = router;
-

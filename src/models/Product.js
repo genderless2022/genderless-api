@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
@@ -6,12 +6,9 @@ module.exports = (sequelize) => {
   sequelize.define('Product', {
     name: {
       type: DataTypes.STRING,
-     
     },
     description: {
-
       type: DataTypes.TEXT,
-
     },
    stock_by_size: {
       type: DataTypes.JSON
@@ -25,10 +22,9 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
     },
     
-    image: { // pienso que deberíamos colocar una imagen por defecto por si acaso...
+    image: { 
       type: DataTypes.TEXT,
-      defaultValue: 'https://pixabay.com/es/vectors/camiseta-de-manga-corta-camisa-cima-34481'
-
+      defaultValue:'https://www.cristobalcolon.com/fullaccess/item21334foto95108.jpg',
     },
     brand: {
       type: DataTypes.STRING,
