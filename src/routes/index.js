@@ -36,9 +36,6 @@ router.use('/usuario', putUserRol);
 const deleteUser = require('./user');
 router.use('/usuario', deleteUser);
 
-router.use("/id", getProductById);
-router.use("/productos", getProduct);
-
 
 const addProductToFavorites = require('./user.js');
 router.use('/usuario', addProductToFavorites);
