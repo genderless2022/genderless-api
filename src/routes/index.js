@@ -18,6 +18,24 @@ router.use('/usuarios', getUsers);
 const getUserInfo = require('./user');
 router.use('/usuario', getUserInfo);
 
+const putUserInfo  = require('./user');
+router.use('/usuario', putUserInfo);
+
+const putUserPassword = require('./user');
+router.use('/usuario', putUserPassword);
+
+const login = require('./user');
+router.use('/usuario', login);
+
+const logout = require('./user');
+router.use('/usuario', logout);
+
+const putUserRol = require('./user');
+router.use('/usuario', putUserRol);
+
+const deleteUser = require('./user');
+router.use('/usuario', deleteUser);
+
 
 const postProduct = require('./product.js');
 
