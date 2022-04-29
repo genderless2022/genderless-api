@@ -86,7 +86,7 @@ var data = [
         discount: 0,
         image: 'https://www.cristobalcolon.com/fullaccess/item21312foto95044.jpg',
         category: 'Campera',
-        brand: 'Y Tú Quique?', 
+        brand: 'Y Tú Quique', 
         disabled: false
     },
     {
@@ -97,7 +97,7 @@ var data = [
         discount: 0,
         image: 'https://www.cristobalcolon.com/fullaccess/item21308foto95031.jpg',
         category: 'Campera',
-        brand: 'Y Tú Quique?', 
+        brand: 'Y Tú Quique', 
         disabled: false
     },
     {
@@ -116,7 +116,7 @@ var data = [
         description: 'Rompeviento Adidas Coach. Cierre de cremallera de doble sentido. Tejido plano. Material taslan. Bolsillos frontales dobles. ',
         stock_by_size: [{size:'S',stock:1589}, {size:'M',stock:1589}, {size:'L',stock:1589}, {size:'XL',stock:1589}, {size:'XXL',stock:1589}],
         price: 13999,
-        discount: 0,
+        discount: 20,
         image: 'https://www.cristobalcolon.com/fullaccess/item21148foto94560.jpg',
         category: 'Campera',
         brand: 'Adidas', 
@@ -149,7 +149,7 @@ var data = [
         description: 'Campera Rip Curl Puffer. Poliester repelente al agua. Campera corta puffer con capucha. Canelones de 12cm. Cierre diente de perro. Cordón con detalle de PU. Multietiquetas. 100% poliéster.',
         stock_by_size: [{size:'S',stock:1589}, {size:'M',stock:1589}, {size:'L',stock:1589}, {size:'XL',stock:1589}, {size:'XXL',stock:1589}],
         price: 9699,
-        discount: 0,
+        discount: 20,
         image: 'https://www.cristobalcolon.com/fullaccess/item21397foto95329.jpg',
         category: 'Campera',
         brand: 'Rip Curl', 
@@ -251,7 +251,7 @@ var data = [
         discount: 0,
         image: 'https://www.cristobalcolon.com/fullaccess/item21327foto95066.jpg',
         category: 'Campera',
-        brand: 'Y Tú Quique?', 
+        brand: 'Y Tú Quique', 
         disabled: false
     },
     {
@@ -327,7 +327,7 @@ var data = [
         description: 'Remeron Zoo York Cracker. Jersey 100% Algodón.  Estampa logo. Unisex. ',
         stock_by_size: [{size:'S',stock:1589}, {size:'M',stock:1589}, {size:'L',stock:1589}, {size:'XL',stock:1589}, {size:'XXL',stock:1589}],
         price: 3999,
-        discount: 0,
+        discount: 20,
         image: 'https://www.cristobalcolon.com/fullaccess/item20858foto93616.jpg',
         category: 'Remera',
         brand: 'Zoo York', 
