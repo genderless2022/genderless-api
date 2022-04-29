@@ -36,9 +36,21 @@ const addProductToFavorites = require('../Controllers/FavoritesControllers/addPr
 router.post('/favorites', addProductToFavorites);
 
 const getProductFromFavorites = require('../Controllers/FavoritesControllers/getProductFromFavorites');
-router.get('/favorites', getProductFromFavorites);
+router.get('/favorites/:email', getProductFromFavorites);
 
 const deleteProductFromFavorites = require('../Controllers/FavoritesControllers/deleteProductFromFavorites')
-router.delete('/favorites', deleteProductFromFavorites);
+router.delete('/favorites/:email/:productId', deleteProductFromFavorites);
+
+const addProductToShpppingCart = require('../Controllers/ShoppingCartControllers/addProductToShoppingCart');
+router.post('/shoppingcart', addProductToShpppingCart);
+
+const getProductFromShoppingCart = require('../Controllers/ShoppingCartControllers/getProductFromShoppingCart');
+router.get('/shoppingcart/:email', getProductFromShoppingCart);
+
+const deleteProductFromShoppingCart = require('../Controllers/ShoppingCartControllers/deleteProductFromShoppingCart');
+router.delete('/shoppingcart/:email/:productId', deleteProductFromShoppingCart);
+
+const deleteAllProductsShoppingCart = require('../Controllers/ShoppingCartControllers/deleteAllProductsFromShoppingCart');
+router.delete('/deleteshoppingcart/:email', deleteAllProductsShoppingCart);
 
 module.exports = router;
