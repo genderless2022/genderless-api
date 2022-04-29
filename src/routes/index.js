@@ -9,32 +9,8 @@ const router = Router();
 const getProduct = require('./product.js');
 const getProductById = require("./product.js");
 
-const postUser = require('./user');
-router.use('/usuario', postUser);
-
 const getUsers = require('./user');
 router.use('/usuarios', getUsers);
-
-const getUserInfo = require('./user');
-router.use('/usuario', getUserInfo);
-
-const putUserInfo  = require('./user');
-router.use('/usuario', putUserInfo);
-
-const putUserPassword = require('./user');
-router.use('/usuario', putUserPassword);
-
-const login = require('./user');
-router.use('/usuario', login);
-
-const logout = require('./user');
-router.use('/usuario', logout);
-
-const putUserRol = require('./user');
-router.use('/usuario', putUserRol);
-
-const deleteUser = require('./user');
-router.use('/usuario', deleteUser);
 
 router.use("/id", getProductById);
 router.use("/productos", getProduct);
