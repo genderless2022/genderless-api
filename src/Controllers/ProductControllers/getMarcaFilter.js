@@ -5,9 +5,9 @@ const productByMarca = async (req, res) => {
   try {
     const productsMarca = await Product.findAll({
       where: {
-          brand: marca,
+        brand: marca,
       },
-    include: [{ model: Category }]
+      include: [{ model: Category }],
     });
     res.status(200).send(productsMarca);
   } catch (error) {

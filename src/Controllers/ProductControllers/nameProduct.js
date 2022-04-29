@@ -3,7 +3,7 @@ const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
 const productByName = async (req, res) => {
-  let { name } = req.query;
+  let { name } = req.params;
   console.log(name);
   const nombre = name.charAt(0).toUpperCase() + name.slice(1);
   try {

@@ -1,25 +1,44 @@
-const { Product, Category } = require('../../db.js')
+const { Product, Category } = require("../../db.js");
 const postProduct = async (req, res, next) => {
+  const {
+    name,
+    description,
+    stock_by_size,
+    price,
+    discount,
+    image,
+    brand,
+    disabled,
+    category,
+  } = req.body;
 
-    const { name, description, stock_by_size, price, discount, image, brand, disabled, category} = req.body
+  try {
+    let productCreated = await Product.create({
+      name,
+      description,
+      stock_by_size,
+      price,
+      discount,
+      image,
+      brand,
+      disabled,
+      category,
+    });
 
     try {
-        let productCreated = await Product.create({name, description, stock_by_size, price, discount, image, brand, disabled, category});
-
-        try {
-            await Category.create({ name: category })
-            }
-            catch (error) {
-                console.log('categoryExists' + error);
-            }
-
-        let categoryCreated = await Category.findOne({where: {name: category}})
-        await categoryCreated.addProduct(productCreated) 
-
-        res.status(201).json({ msg: 'Product created correctly with id', id: productCreated })
+      await Category.create({ name: category });
+    } catch (error) {
+      console.log("categoryExists" + error);
     }
-    catch(error){
-        console.log('Post Error' + error)
-    }
+
+    let categoryCreated = await Category.findOne({ where: { name: category } });
+    await categoryCreated.addProduct(productCreated);
+
+    res
+      .status(201)
+      .json({ msg: "Product created correctly with id", id: productCreated });
+  } catch (error) {
+    console.log("Post Error" + error);
+  }
 };
 module.exports = postProduct;

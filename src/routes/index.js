@@ -11,8 +11,9 @@ const postProduct = require("./product.js");
 const putProduct = require("./product.js");
 const getProductByName = require("./product.js");
 const getProductById = require("./product.js");
-const getPrice = require("./product.js")
-const getCategory = require("./product.js")
+const getPrice = require("./product.js");
+const getCategory = require("./product.js");
+const getDiscount = require("./product.js");
 
 const postUser = require('./user');
 router.use('/usuario', postUser);
@@ -24,10 +25,11 @@ const getUserInfo = require('./user');
 router.use('/usuario', getUserInfo);
 
 router.use("/id", getProductById);
-router.use("/name", getProductByName);
-router.use("/productos", getCategory)
-router.use("/productos", getPrice)
-router.use("/productos", getProduct)
+router.use("/productos", getDiscount);
+router.use("/productos", getProductByName);
+router.use("/productos", getCategory);
+router.use("/productos", getPrice);
+router.use("/productos", getProduct);
 router.use("/productos", getProduct);
 router.use("/productos", postProduct);
 router.use("/productos", putProduct);
