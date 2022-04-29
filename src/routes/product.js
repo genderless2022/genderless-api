@@ -15,7 +15,7 @@ router.get("/discount", discountFilter)
 router.get("/categoria/:categoria", productByCategory)
 router.get("/price/:price", getPriceFilter)
 router.get("/marca/:marca", getProductMarca);
-router.get("/:id", getProductById);
+router.get("/id/:id", getProductById);
 router.get("/name/:name", getProductByName);
 router.get('/', getProduct);
 router.post("/", postProduct);
