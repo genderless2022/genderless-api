@@ -9,4 +9,12 @@ const encrypt = async (textPlain) => {
     }
 }
 
-module.exports = { encrypt };
+const compare = async (textPlain, hashPass) => {
+    try {
+        return await bcrypt.compare(textPlain, hashPass);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = {encrypt, compare};
