@@ -12,4 +12,14 @@ router.get('/', getUsers);
 
 const getUserInfo = require('../Controllers/UserControllers/getUserInfo');
 router.get('/info', checkAuth, checkRoles(['admin', 'user']), getUserInfo);
+
+const addProductToFavorites = require('../Controllers/FavoritesControllers/addProductToFavorites');
+router.post('/favorites', addProductToFavorites);
+
+const getProductFromFavorites = require('../Controllers/FavoritesControllers/getProductFromFavorites');
+router.get('/favorites', getProductFromFavorites);
+
+const deleteProductFromFavorites = require('../Controllers/FavoritesControllers/deleteProductFromFavorites')
+router.delete('/favorites', deleteProductFromFavorites);
+
 module.exports = router;

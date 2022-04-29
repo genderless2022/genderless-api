@@ -34,4 +34,15 @@ router.use("/productos", getProduct);
 router.use("/productos", postProduct);
 router.use("/productos", putProduct);
 
+const addProductToFavorites = require('./user.js');
+router.use('/usuario', addProductToFavorites);
+
+const getProductFromFavorites = require('./user.js');
+router.use('/usuario', getProductFromFavorites);
+
+const deleteProductFromFavorites = require('./user.js');
+router.use('/usuario', deleteProductFromFavorites);
+
+
+
 module.exports = router;

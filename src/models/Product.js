@@ -21,12 +21,10 @@ module.exports = (sequelize) => {
     discount: {
       type: DataTypes.INTEGER,
     },
-
-    image: {
-      // pienso que deberíamos colocar una imagen por defecto por si acaso...
+    
+    image: { 
       type: DataTypes.TEXT,
-      defaultValue:
-        "https://pixabay.com/es/vectors/camiseta-de-manga-corta-camisa-cima-34481",
+      defaultValue:'https://www.cristobalcolon.com/fullaccess/item21334foto95108.jpg',
     },
     brand: {
       type: DataTypes.STRING,
