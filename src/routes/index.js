@@ -12,10 +12,6 @@ router.use("/productos", getProduct);
 const getUsers = require('./user');
 router.use('/usuarios', getUsers);
 
-router.use("/id", getProductById);
-router.use("/productos", getProduct);
-
-
 const addProductToFavorites = require('./user.js');
 router.use('/usuario', addProductToFavorites);
 
