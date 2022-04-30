@@ -41,4 +41,19 @@ router.get('/favorites', getProductFromFavorites);
 const deleteProductFromFavorites = require('../Controllers/FavoritesControllers/deleteProductFromFavorites')
 router.delete('/favorites', deleteProductFromFavorites);
 
+const addReview = require('../Controllers/ReviewsControllers/addReview');
+router.post('/review', addReview);
+
+const getReviews = require('../Controllers/ReviewsControllers/getReviews');
+router.get('/reviews', getReviews);
+
+const getReview = require('../Controllers/ReviewsControllers/getReview');
+router.get('/review', getReview);
+
+const deleteReview = require('../Controllers/ReviewsControllers/deleteReview')
+router.delete('/review', deleteReview);
+
+const deleteReviewById = require('../Controllers/ReviewsControllers/deleteReviewById')
+router.delete('/review/:id', deleteReviewById);
+
 module.exports = router;
