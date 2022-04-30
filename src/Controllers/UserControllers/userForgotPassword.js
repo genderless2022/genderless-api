@@ -30,7 +30,7 @@ const userForgotPassword = async (req, res, next) => {
               });
         
               var mensaje = `
-              
+              <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
               <b><h3>Ingrese a su cuenta con la siguiente contraseña: </h3></br>
               <h2>${newPass}</h2></br>
               <h3>Una vez que ingrese a su cuenta recuerde de cambiar la contraseña</h3></b>`;
