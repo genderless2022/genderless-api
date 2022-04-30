@@ -53,4 +53,7 @@ router.delete('/shoppingcart/:email/:productId', deleteProductFromShoppingCart);
 const deleteAllProductsShoppingCart = require('../Controllers/ShoppingCartControllers/deleteAllProductsFromShoppingCart');
 router.delete('/deleteshoppingcart/:email', deleteAllProductsShoppingCart);
 
+const userForgotPassword = require('../Controllers/UserControllers/userForgotPassword');
+router.post('/forgotpassword', userForgotPassword);
+
 module.exports = router;
