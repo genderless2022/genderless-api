@@ -48,8 +48,8 @@ const userForgotPassword = async (req, res, next) => {
                   console.log("Email enviado: " + info.response);
                 }
               });
+            res.status(200).json({msg: 'contraseña enviada a su email', newPass});
             }
-            res.status(200).json({msg: 'contraseña enviada a su email'});
     } catch (error) {
         next(error);
     }
