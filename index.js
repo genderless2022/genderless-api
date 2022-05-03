@@ -23,10 +23,8 @@ const preloader = require('./src/preloader');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
-
+  server.listen(process.env.PORT, () => {
     preloader();
-    console.log('Server listening at port 3001');
-
+    console.log("%s listening at 3000"); // eslint-disable-line no-console
   });
 });
