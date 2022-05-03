@@ -25,6 +25,6 @@ const preloader = require('./src/preloader');
 conn.sync({ force: true }).then(() => {
   server.listen(process.env.PORT, () => {
     preloader();
-    console.log("%s listening at 3000"); // eslint-disable-line no-console
+    console.log(`app is running on port ${process.env.PORT}`); // eslint-disable-line no-console
   });
 });
