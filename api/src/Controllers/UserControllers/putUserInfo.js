@@ -1,4 +1,5 @@
 const { User } = require("../../db");
+const sendEmail = require ('../../utils/sendEmail');
 
 const putUserInfo = async (req, res, next) => {
     const {
@@ -21,6 +22,16 @@ const putUserInfo = async (req, res, next) => {
                         email: email,
                     },
                 });
+                let mensaje = `
+                <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
+                <b><h3>${name} ${lastName} usted ha modificado alguno de sus datos, si no ha sido usted, por favor contáctenos inmediatamente.</h3></br>`;
+                
+                await sendEmail({
+                email: email,
+                subject: 'Modificación de datos',
+                mensaje,
+                });
+
                 res.status(200).json({ msg: "Usuario actualizado", user });
             } else {
                 res.status(400).json({ msg: "No hay usuarios almacenados" });

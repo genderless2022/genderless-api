@@ -1,7 +1,7 @@
 const {User} = require('../../db');
 const {encrypt} = require('../../Middleware/handleBCript');
 const {tokenSign} = require('../../Middleware/generateToken');
-
+const sendEmail = require ('../../utils/sendEmail');
 
 const postUser = async (req, res, next) => {
     try {
@@ -32,7 +32,19 @@ const postUser = async (req, res, next) => {
             });
 
             const token = await tokenSign(user);
-            res.status(200).json({msg: 'usuario creado con exito', token});
+            
+            let mensaje = `
+            <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
+            <b><h3>${name} ${lastName} gracias por crear una cuenta con nosotros</h3></br>`;
+             
+            await sendEmail({
+              email: email,
+              subject: 'Registro de cuenta',
+              mensaje,
+            });
+
+            
+            res.status(200).json({msg: 'usuario creado con exito', token, name, lastName, email});
             
         } else {
             user? res.status(400).json({msg: `el email: ${email} ya existe`}) : res.status(400).json({msg: `el dni: ${dni} ya existe`});
