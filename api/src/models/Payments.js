@@ -22,6 +22,12 @@ module.exports = (sequelize) => {
     total_paid_amount: {
       type: DataTypes.FLOAT,
     },
+    status: {
+      type: DataTypes.STRING,
+    },
+    status_detail: {
+      type: DataTypes.STRING,
+    },
     /* id_user: {
         type: DataTypes.INTEGER
     } */
