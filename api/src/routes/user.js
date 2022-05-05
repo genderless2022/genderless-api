@@ -71,4 +71,12 @@ router.delete('/review', deleteReview);
 const deleteReviewById = require('../Controllers/ReviewsControllers/deleteReviewById')
 router.delete('/review/:id', deleteReviewById);
 
+const newsletter = require('../Controllers/NewsletterControllers/newsletter');
+router.post('/newsletter', newsletter);
+
+const newsProductFavorite = require('../Controllers/NewsletterControllers/nesletterFavorites');
+router.post('/newsletterfavorites', newsProductFavorite);
 module.exports = router;
+
+const unsubscribeNewsletter = require('../Controllers/NewsletterControllers/unsubscribeNewsletter');
+router.post('/unsubscribe/:email', unsubscribeNewsletter);
