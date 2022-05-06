@@ -4,7 +4,7 @@ const stateModifiqued = async (req, res) => {
   const data = req.body;
   await Payment.update(
     {
-      status: data.state,
+      status_delivery: data.state,
     },
     { where: { id: data.id } }
   );

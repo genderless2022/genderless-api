@@ -1,5 +1,6 @@
 const { Payment, Product } = require("../../db");
 const axios = require("axios");
+const auth = require("../../Middleware/roleAuth")
 
 const paymentSuccess = async (req, res) => {
   const id = req.query.payment_id;
@@ -28,9 +29,14 @@ const paymentSuccess = async (req, res) => {
     status: infoApi.data.status,
     status_detail: infoApi.data.status_detail,
   };
-  console.log(infoApi.data.status);
-  console.log(infoApi.data.status_detail);
+  console.log(infoApi.data.additional_info.items);
+//---------------------------------------------
 
+
+/* logica con token de usuario */
+
+
+//---------------------------------------------
   if (infoTotal) {
     for (let i = 0; i < infoTotal.items.length; i++) {
       let aux = {
@@ -42,12 +48,16 @@ const paymentSuccess = async (req, res) => {
         total_paid_amount: infoTotal.total_paid_amount,
         status: infoTotal.status,
         status_detail: infoTotal.status_detail,
+        status_delivery: "En preparacion",
+        email: "lochicosdelgender@gmail.com"
       };
       /* console.log(aux); */
       await Payment.create(aux);
     }
   }
   /* console.log(infoTotal); */
+
+  
 
   for (let i = 0; i < infoTotal.items.length; i++) {
     const product = await Product.findOne({

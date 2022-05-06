@@ -1,4 +1,5 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, UniqueConstraintError } = require("sequelize");
+const data = require("../productList");
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
@@ -28,6 +29,12 @@ module.exports = (sequelize) => {
     status_detail: {
       type: DataTypes.STRING,
     },
+    status_delivery: {
+      type: DataTypes.STRING,
+    },
+    email: {
+      type: DataTypes.STRING,
+    }
     /* id_user: {
         type: DataTypes.INTEGER
     } */
