@@ -10,7 +10,7 @@ const login = async (req, res, next) => {
             const match = await compare(password, user.password);
             if(match){
                 const tokenSession = await tokenSign(user);
-                res.status(200).json({msg: 'usuario logueado con éxito', user, tokenSession});
+                res.status(200).json({msg: 'usuario logueado con éxito',email: user.email, user: user, id: user.id, name: user.name, permission:user.permission, tokenSession});
             } else {
                 res.status(400).json({msg: 'contraseña incorrecta'});
             }

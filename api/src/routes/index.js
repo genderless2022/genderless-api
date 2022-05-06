@@ -4,6 +4,10 @@ const { Router } = require("express");
 
 const router = Router();
 
+const mercado = require("./mercadopago")
+
+router.use("/mercado", mercado)
+
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 const getProduct = require('./product.js');

@@ -20,7 +20,7 @@ const login = require('../Controllers/UserControllers/loginUser');
 router.post('/login', login);
 
 const logout = require('../Controllers/UserControllers/logoutUser');
-router.get('/logout', logout);
+router.post('/logout', logout);
 
 const getUserInfo = require('../Controllers/UserControllers/getUserInfo');
 router.get('/email/:email', checkAuth, checkRoles(['admin', 'user']), getUserInfo);
