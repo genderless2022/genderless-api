@@ -1,7 +1,7 @@
 const {User} = require('../../db');
-const nodemailer = require('nodemailer');
 const bcrypt = require('bcryptjs');
 const generatePassword = require('../../Middleware/generatePassword');
+const sendEmail = require ('../../utils/sendEmail');
 
 const userForgotPassword = async (req, res, next) => {
     const {email} = req.body;
@@ -19,37 +19,29 @@ const userForgotPassword = async (req, res, next) => {
                     },
                 }
             );
-            var transporter = nodemailer.createTransport({
-                host: "smtp.gmail.com",
-                port: 465,
-                secure: true,
-                auth: {
-                  user: "genderless2022@gmail.com",
-                  pass: "gjzpgjexgkgcbiru",
-                },
-              });
-        
-              var mensaje = `
-              <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
-              <b><h3>Ingrese a su cuenta con la siguiente contraseña: </h3></br>
-              <h2>${newPass}</h2></br>
-              <h3>Una vez que ingrese a su cuenta recuerde de cambiar la contraseña</h3></b>`;
-              var mailOptions = {
-                from: '"Envio de email"<malcolm.kihn33@ethereal.email>',
-                to: email,
-                subject: "Restablecer contraseña",
-                //text: mensaje
-                html: mensaje,
-              };
-              transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                  console.log(error);
-                } else {
-                  console.log("Email enviado: " + info.response);
-                }
-              });
+                 
+            let mensaje = `
+            <head>
+            <style>
+            h1 { color: #e7bf50; }
+            h2 { color: #9381ff; }
+            p { color: #0e1428; font-size: 15px}
+            </style>
+            </head>
+            <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
+            <h1> Usted ha solicitado una nueva contraseña </h1>
+            <b><p>Ingrese a su cuenta con la siguiente contraseña: </p></br>
+            <h2>${newPass}</h2></br>
+            <p>Una vez que ingrese a su cuenta recuerde de cambiar la contraseña</p></b>`;
+             
+            await sendEmail({
+              email: email,
+              subject: 'Olvido de contraseña',
+              mensaje,
+            });
+            
             res.status(200).json({msg: 'contraseña enviada a su email', newPass});
-            }
+        }
     } catch (error) {
         next(error);
     }
