@@ -34,8 +34,15 @@ const postUser = async (req, res, next) => {
             const token = await tokenSign(user);
             
             let mensaje = `
-            <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
-            <b><h3>${name} ${lastName} gracias por crear una cuenta con nosotros</h3></br>`;
+            <head>
+            <style>
+             h1 { color: #e7bf50 }
+             p { color: #0e1428; font-size: 15px}
+            </style>
+            </head>
+            <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='23%' height='23%'/>
+            <h1>Bienvenido ${name} ${lastName}</h1>
+            <b><p>Gracias por crear una cuenta con nosotros</p></br>`;
              
             await sendEmail({
               email: email,

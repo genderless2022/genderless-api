@@ -76,7 +76,8 @@ router.post('/newsletter', newsletter);
 
 const newsProductFavorite = require('../Controllers/NewsletterControllers/nesletterFavorites');
 router.post('/newsletterfavorites', newsProductFavorite);
-module.exports = router;
 
 const unsubscribeNewsletter = require('../Controllers/NewsletterControllers/unsubscribeNewsletter');
 router.post('/unsubscribe/:email', unsubscribeNewsletter);
+
+module.exports = router;

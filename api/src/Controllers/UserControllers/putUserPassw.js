@@ -12,8 +12,15 @@ const putUserPassword = async (req, res, next) => {
             );
             
             let mensaje = `
+            <head>
+            <style>
+             h1 { color: #e7bf50 }
+             p { color: #0e1428; font-size: 15px}
+            </style>
+            </head>
             <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
-            <b><h3>${user.name} ${user.lastName} usted ha modificado su contraseña, si usted no ha realizado dicha actividad, por favor contacte inmediatamente con nosotros.</h3></br>`;
+            <h1> Usted ha cambiado su contraseña </h1>
+            <b><p>${user.name} ${user.lastName} usted ha modificado su contraseña, si usted no ha realizado dicha actividad, por favor contacte inmediatamente con nosotros.</p></br>`;
              
             await sendEmail({
               email: email,
