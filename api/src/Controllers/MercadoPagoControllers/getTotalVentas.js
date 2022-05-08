@@ -1,4 +1,4 @@
-const { literal, Op } = require("sequelize");
+const { literal } = require("sequelize");
 const { Payment } = require("../../db");
 
 const productsPriceTotal = async (req, res) => {
@@ -6,7 +6,6 @@ const productsPriceTotal = async (req, res) => {
     const priceTotal = await Payment.findAll({
       attributes: [[literal("price * quantity"), "test_field"]],
     });
-    /* console.log(priceTotal); */
     if (priceTotal) {
       const order = priceTotal.reduce((a, b) => {
         return a + b.dataValues.test_field;

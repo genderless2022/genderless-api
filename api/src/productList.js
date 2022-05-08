@@ -9,7 +9,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21402foto95323th.jpg',
         category: 'Buzo',
         brand: 'Rip Curl', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Remera DC Bandana',
@@ -20,7 +21,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21406foto95347th.jpg',
         category: 'Remera',
         brand: 'DC', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Remera Rip Curl Pro',
@@ -31,7 +33,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21405foto95345.jpg',
         category: 'Remera',
         brand: 'Rip Curl', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Buzo Rip Curl Pro',
@@ -42,7 +45,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21404foto95342.jpg',
         category: 'Buzo',
         brand: 'Rip Curl', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
   
     {
@@ -54,7 +58,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21385foto95276.jpg',
         category: 'Remera',
         brand: 'Zoo York', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Pantalon Circa Chino',
@@ -65,7 +70,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21339foto95127.jpg',
         category: 'Pantalon',
         brand: 'Circa', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Pantalon Rusty Cargo X-Charge',
@@ -76,7 +82,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21362foto95160.jpg',
         category: 'Pantalon',
         brand: 'Rusty', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Campera Y Tú Quique? Puffer Cord',
@@ -87,7 +94,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21312foto95044.jpg',
         category: 'Campera',
         brand: 'Y Tú Quique', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Campera Y Tú Quique? Puffer Cord',
@@ -98,7 +106,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21308foto95031.jpg',
         category: 'Campera',
         brand: 'Y Tú Quique', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Pantalon Adidas Pintuck',
@@ -109,7 +118,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21149foto94563.jpg',
         category: 'Pantalon',
         brand: 'Adidas', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Rompeviento Adidas Coach',
@@ -120,7 +130,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21148foto94560.jpg',
         category: 'Campera',
         brand: 'Adidas', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Buzo Adidas Shmoo',
@@ -131,7 +142,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item17985foto94550.jpg',
         category: 'Buzo',
         brand: 'Adidas', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Chaleco Rip Curl Puffer',
@@ -142,7 +154,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21390foto95285.jpg',
         category: 'Chaleco',
         brand: 'Rip Curl', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Campera Rip Curl Puffer',
@@ -153,7 +166,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21397foto95329.jpg',
         category: 'Campera',
         brand: 'Rip Curl', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Campera Rip Curl Puffer',
@@ -164,7 +178,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21396foto95310.jpg',
         category: 'Campera',
         brand: 'Rip Curl', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Campera Volcom Hernan',
@@ -175,7 +190,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21373foto95179.jpg',
         category: 'Campera',
         brand: 'Volcom', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Buzo Rip Curl Classic Po',
@@ -186,7 +202,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21375foto95183.jpg',
         category: 'Buzo',
         brand: 'Rip Curl', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Buzo Rusty Cheater',
@@ -197,7 +214,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21376foto95184.jpg',
         category: 'Buzo',
         brand: 'Rusty', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Buzo Vans OTW Po II',
@@ -208,7 +226,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21367foto95168.jpg',
         category: 'Buzo',
         brand: 'Vans', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Buzo Vans Crew Classic',
@@ -219,7 +238,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21370foto95171.jpg',
         category: 'Buzo',
         brand: 'Vans', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Remera Volcom Smile',
@@ -230,7 +250,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21334foto95108.jpg',
         category: 'Remera',
         brand: 'Volcom', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Pantalon Rip Curl Slouchy Plain',
@@ -241,7 +262,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21328foto95074.jpg',
         category: 'Pantalon',
         brand: 'Rip Curl', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Campera Y Tú Quique? Puffer',
@@ -252,7 +274,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21327foto95066.jpg',
         category: 'Campera',
         brand: 'Y Tú Quique', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Buzo Volcom Hood Eagle',
@@ -263,7 +286,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item20795foto93337.jpg',
         category: 'Buzo',
         brand: 'Volcom', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Campera Rip Curl Parka',
@@ -274,7 +298,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item20631foto92434.jpg',
         category: 'Campera',
         brand: 'Rip Curl', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Remera Rip Curl Heritage Loose',
@@ -285,7 +310,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21293foto94998.jpg',
         category: 'Remera',
         brand: 'Rip Curl', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Buzo Volcom Liv Homax',
@@ -296,7 +322,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21208foto94742.jpg',
         category: 'Buzo',
         brand: 'Volcom', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
    
     {
@@ -308,7 +335,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21026foto94138.jpg',
         category: 'Pantalon',
         brand: 'Champion', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
    
     {
@@ -320,7 +348,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item21025foto94137.jpg',
         category: 'Remera',
         brand: 'Champion', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
     {
         name: 'Remera Zoo York Cracker',
@@ -331,7 +360,8 @@ var data = [
         image: 'https://www.cristobalcolon.com/fullaccess/item20858foto93616.jpg',
         category: 'Remera',
         brand: 'Zoo York', 
-        disabled: false
+        disabled: false,
+        sales: 0
     },
    
     
