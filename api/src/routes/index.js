@@ -4,6 +4,10 @@ const { Router } = require("express");
 
 const router = Router();
 
+const mercado = require("./mercadopago")
+
+router.use("/mercado", mercado)
+
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 const getProduct = require('./product.js');
@@ -20,6 +24,23 @@ router.use('/usuario', getProductFromFavorites);
 
 const deleteProductFromFavorites = require('./user.js');
 router.use('/usuario', deleteProductFromFavorites);
+
+const addReview = require('./user.js')
+router.use('/usuario', addReview);
+
+const getReviews = require('./user.js')
+router.use('/usuario', getReviews);
+
+const getReview = require('./user.js')
+router.use('/usuario', getReview);
+
+const deleteReview = require('./user.js')
+router.use('/usuario', deleteReview);
+
+const deleteReviewById = require('./user.js')
+router.use('/usuario', deleteReviewById);
+
+
 
 
 

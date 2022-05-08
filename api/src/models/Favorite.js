@@ -8,14 +8,14 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true // el producto debería tener un nombre único me parece mejor
+      
     },
     description: {
       type: DataTypes.TEXT, 
       allowNull: false
     },
     stock_by_size: {
-        type: DataTypes.JSON
+        type: DataTypes.JSON, 
       },
     price: {
       type: DataTypes.FLOAT,
