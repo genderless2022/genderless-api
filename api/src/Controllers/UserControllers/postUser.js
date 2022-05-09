@@ -13,7 +13,7 @@ const postUser = async (req, res, next) => {
         }
 
         let user = await User.findOne({where:{email}});
-        let searchDNI = await User.findOne({where:{dni}});
+        let searchDNI = await User.findOne({where:{dni: dni || null}});
 
         if(!user && !searchDNI){
             user = await User.create({
