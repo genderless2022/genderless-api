@@ -63,10 +63,10 @@ const getReviews = require('../Controllers/ReviewsControllers/getReviews');
 router.get('/reviews', getReviews);
 
 const getReview = require('../Controllers/ReviewsControllers/getReview');
-router.get('/review', getReview);
+router.get('/review/:productId', getReview);
 
 const deleteReview = require('../Controllers/ReviewsControllers/deleteReview')
-router.delete('/review', deleteReview);
+router.delete('/review/:email/:productId', deleteReview);
 
 const deleteReviewById = require('../Controllers/ReviewsControllers/deleteReviewById')
 router.delete('/review/:id', deleteReviewById);

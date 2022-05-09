@@ -1,7 +1,7 @@
 const {Product} = require('../../db.js');
 
 const getReview = async (req, res, next) => {
-    const {productId} = req.body;
+    const {productId} = req.params;
     try {
         const product = await Product.findOne({where: {id: productId}});
         if(!product) {
