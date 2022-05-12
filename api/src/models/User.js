@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
         },
 
         born: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY
         },
 
         dni: {

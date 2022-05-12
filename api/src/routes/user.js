@@ -20,7 +20,7 @@ const login = require('../Controllers/UserControllers/loginUser');
 router.post('/login', login);
 
 const logout = require('../Controllers/UserControllers/logoutUser');
-router.get('/logout', logout);
+router.post('/logout', logout);
 
 const getUserInfo = require('../Controllers/UserControllers/getUserInfo');
 router.get('/email/:email', checkAuth, checkRoles(['admin', 'user']), getUserInfo);
@@ -63,12 +63,21 @@ const getReviews = require('../Controllers/ReviewsControllers/getReviews');
 router.get('/reviews', getReviews);
 
 const getReview = require('../Controllers/ReviewsControllers/getReview');
-router.get('/review', getReview);
+router.get('/review/:productId', getReview);
 
 const deleteReview = require('../Controllers/ReviewsControllers/deleteReview')
-router.delete('/review', deleteReview);
+router.delete('/review/:email/:productId', deleteReview);
 
 const deleteReviewById = require('../Controllers/ReviewsControllers/deleteReviewById')
 router.delete('/review/:id', deleteReviewById);
+
+const newsletter = require('../Controllers/NewsletterControllers/newsletter');
+router.post('/newsletter', newsletter);
+
+const newsProductFavorite = require('../Controllers/NewsletterControllers/nesletterFavorites');
+router.post('/newsletterfavorites', newsProductFavorite);
+
+const unsubscribeNewsletter = require('../Controllers/NewsletterControllers/unsubscribeNewsletter');
+router.post('/unsubscribe/:email', unsubscribeNewsletter);
 
 module.exports = router;

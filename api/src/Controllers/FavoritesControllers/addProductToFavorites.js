@@ -8,16 +8,23 @@ const addProductToFavorites = async (req, res, next) => {
         if (!product) {
             res.status(404).json({msg: 'Producto no encontrado'});
         } else {
-            const favorite = await Favorite.create({
-                id: product.id,
-                name: product.name,
-                description: product.description,
-                stock_by_size: product.stock_by_size,
-                price: product.price,
-                discount: product.discount,
-                image: product.image
-            });
-            
+            const searchFavorite = await Favorite.findOne({where: {id: product.id}})
+            let favorite;
+            if(!searchFavorite) {
+                favorite = await Favorite.create({
+                    id: product.id,
+                    name: product.name,
+                    description: product.description,
+                    stock_by_size: product.stock_by_size,
+                    price: product.price,
+                    discount: product.discount,
+                    image: product.image,
+
+                });
+            } else {
+                favorite = searchFavorite;
+            }
+                                   
             const user = await User.findOne({where: {email: email}});
             if(!user) {
                 res.status(404).json({msg: 'Usuario no encontrado'});

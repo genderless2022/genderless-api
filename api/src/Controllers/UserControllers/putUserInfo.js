@@ -1,4 +1,5 @@
 const { User } = require("../../db");
+const sendEmail = require ('../../utils/sendEmail');
 
 const putUserInfo = async (req, res, next) => {
     const {
@@ -21,6 +22,34 @@ const putUserInfo = async (req, res, next) => {
                         email: email,
                     },
                 });
+                let mensaje = `
+                <head>
+                <style>
+                h1 { color: #e7bf50 }
+                p { color: #0e1428; font-size: 15px}
+                li { color: #0e1428; font-size: 15px}
+                </style>
+                </head>
+                <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
+                <h1> ${name} ${lastName} ha modificado su información </h1>
+                <b><p>Sus datos han sido modificado por la siguiente información:</p></br>
+                <li>Nombre: ${name}</li>
+                <li>Apellido: ${lastName}</li>
+                <li>Fecha de nacimiento: ${born}</li>
+                <li>DNI: ${dni}</li>
+                <li>Dirección: ${address}</li>
+                <li>Provincia: ${province}</li>
+                <li>Código postal: ${postal}</li>
+                <li>Teléfono: ${phone}</li>
+                <p>Si usted no ha realizado dicha acción, por favor contáctenos inmediatamente.</p></br>
+                `;
+                
+                await sendEmail({
+                email: email,
+                subject: 'Modificación de datos',
+                mensaje,
+                });
+
                 res.status(200).json({ msg: "Usuario actualizado", user });
             } else {
                 res.status(400).json({ msg: "No hay usuarios almacenados" });
