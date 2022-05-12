@@ -58,8 +58,8 @@ const paymentSuccess = async (req, res) => {
     const product = await Product.findOne({
       where: { name: pro.name },
     });
-    console.log(product.sales, pro.quantity );
-    const salesNum = product.sales;
+    /* console.log(product.sales, pro.quantity ); */
+    const salesNum = Number(product.sales) + Number(pro.quantity);
     const stockChange = product.dataValues.stock_by_size.map((elem) => {
       if (elem.size === pro.size) {
         let stock = {
@@ -69,14 +69,15 @@ const paymentSuccess = async (req, res) => {
         return stock;
       } else return elem;
     });
+    /* console.log(salesNum); */
     await Product.update(
       {
-        sales: salesNum + pro.quantity,
+        sales: salesNum,
         stock_by_size: stockChange,
       },
       { where: { name: product.dataValues.name } }
     );
-    console.log("logrado");
+    /* console.log("logrado"); */
   });
 };
 

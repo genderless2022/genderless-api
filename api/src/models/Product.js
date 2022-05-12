@@ -3,40 +3,38 @@ const { DataTypes, INTEGER } = require("sequelize");
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('Product', {
+  sequelize.define("Product", {
     name: {
       type: DataTypes.STRING,
     },
     description: {
       type: DataTypes.TEXT,
     },
-   stock_by_size: {
-      type: DataTypes.JSON
+    stock_by_size: {
+      type: DataTypes.JSON,
     },
     price: {
       type: DataTypes.FLOAT,
-      
     },
 
     discount: {
       type: DataTypes.INTEGER,
     },
-    
-    image: { 
+
+    image: {
       type: DataTypes.TEXT,
-      defaultValue:'https://www.cristobalcolon.com/fullaccess/item21334foto95108.jpg',
+      defaultValue:
+        "https://www.cristobalcolon.com/fullaccess/item21334foto95108.jpg",
     },
     brand: {
       type: DataTypes.STRING,
     },
     disabled: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false
-
+      defaultValue: false,
     },
     sales: {
-      type: DataTypes.FLOAT,
-    }
-    
+      type: DataTypes.INTEGER,
+    },
   });
 };

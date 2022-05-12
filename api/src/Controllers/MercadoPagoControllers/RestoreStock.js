@@ -17,7 +17,7 @@ const stockRestored = async (req, res) => {
     } else return elem;
   });
 
-  console.log(productCorrect);
+/*   console.log(productCorrect); */
 
   await Product.update(
     {
