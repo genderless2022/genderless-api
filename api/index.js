@@ -17,16 +17,19 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 const http = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const preloader = require('./src/preloader');
 const serverIo = require('./src/Socket/ServerIo');
+const socket = require('./src/Socket/ServerIo');
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
   http.listen(process.env.PORT, () => {
-    //preloader();
+    // preloader();
     
     console.log(`app is running on port ${process.env.PORT}`); // eslint-disable-line no-console
   });
 });
-serverIo(http);
+// serverIo(http);
+socket(http)
