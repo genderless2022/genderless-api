@@ -23,7 +23,7 @@ const logout = require('../Controllers/UserControllers/logoutUser');
 router.post('/logout', logout);
 
 const getUserInfo = require('../Controllers/UserControllers/getUserInfo');
-router.get('/email/:email', checkAuth, checkRoles(['admin', 'user']), getUserInfo);
+router.get('/email/:email',  getUserInfo);
 
 const putUserRol = require('../Controllers/UserControllers/putUserRol');
 router.put('/rol', putUserRol);
