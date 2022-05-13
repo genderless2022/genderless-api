@@ -8,7 +8,7 @@ const addProductToShpppingCart = async(req,res, next)=>{
             res.status(404).json({msg: 'No producto'});
         } else {
             const stock = product.stock_by_size.find(e => e.size === productSize);
-            if (stock.stock <=0) {
+            if (stock.stock <= 0) {
                 res.status(404).json({msg: 'No hay stock suficiente'});
             } else {
                 const user = await User.findOne({where: {email}});
