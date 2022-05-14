@@ -18,5 +18,13 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
         },
 
+        // UserId: {
+        //     type: DataTypes.INTEGER,
+        // },
+
+        // ProductId: {
+        //     type: DataTypes.INTEGER,
+        // },
+
     });
 };

@@ -47,6 +47,9 @@ router.post('/shoppingcart', addProductToShpppingCart);
 const getProductFromShoppingCart = require('../Controllers/ShoppingCartControllers/getProductFromShoppingCart');
 router.get('/shoppingcart/:email', getProductFromShoppingCart);
 
+const putProductToShoppingCart = require('../Controllers/ShoppingCartControllers/putProductToShoppingCart');
+router.put('/shoppingcart', putProductToShoppingCart);
+
 const deleteProductFromShoppingCart = require('../Controllers/ShoppingCartControllers/deleteProductFromShoppingCart');
 router.delete('/shoppingcart/:email/:productId', deleteProductFromShoppingCart);
 

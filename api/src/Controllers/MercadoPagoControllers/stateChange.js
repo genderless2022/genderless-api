@@ -9,6 +9,11 @@ const stateModifiqued = async (req, res) => {
     { where: { id: data.id } }
   );
   res.status(202).send("cambiado");
+  const infoPayment = await Payment.findOne({ where: { id: data.id } });
+  console.log(infoPayment)
+  // if (status_delivery === 'enviado') {
+  // }
 };
 
 module.exports = stateModifiqued;
+
