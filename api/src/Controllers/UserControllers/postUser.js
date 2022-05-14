@@ -41,7 +41,7 @@ const postUser = async (req, res, next) => {
             </head>
             <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='23%' height='23%'/>
             <h1>Bienvenido ${name} ${lastName}</h1>
-            <b><p>Gracias por crear una cuenta con nosotros</p></br>`;
+            <p>Gracias por crear una cuenta con nosotros</p>`;
             
             await sendEmail({
                 email: email,

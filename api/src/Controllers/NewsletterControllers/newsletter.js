@@ -52,7 +52,7 @@ const newsletter = async (req, res, next) => {
             </head>
             <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
             <h1> Usted se ha susbscrito a nuestros newsletter </h1>
-            <b><p>Gracias por suscribirse a nuestro canal de noticias con el email: ${email}, en dicho canal usted recibirá información sobre nuestros productos y promociones. </p></br>
+            <p>Gracias por suscribirse a nuestro canal de noticias con el email: ${email}, en dicho canal usted recibirá información sobre nuestros productos y promociones. </p>
             `;
              
             await sendEmail({
