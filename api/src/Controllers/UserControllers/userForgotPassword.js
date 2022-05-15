@@ -30,9 +30,9 @@ const userForgotPassword = async (req, res, next) => {
             </head>
             <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
             <h1> Usted ha solicitado una nueva contraseña </h1>
-            <b><p>Ingrese a su cuenta con la siguiente contraseña: </p></br>
-            <h2>${newPass}</h2></br>
-            <p>Una vez que ingrese a su cuenta recuerde de cambiar la contraseña</p></b>`;
+            <p>Ingrese a su cuenta con la siguiente contraseña: </p>
+            <h2>${newPass}</h2>
+            <p>Una vez que ingrese a su cuenta recuerde de cambiar la contraseña</p>`;
              
             await sendEmail({
               email: email,

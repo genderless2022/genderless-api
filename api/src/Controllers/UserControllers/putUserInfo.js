@@ -32,7 +32,7 @@ const putUserInfo = async (req, res, next) => {
                 </head>
                 <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
                 <h1> ${name} ${lastName} ha modificado su información </h1>
-                <b><p>Sus datos han sido modificado por la siguiente información:</p></br>
+                <p>Sus datos han sido modificado con la siguiente información:</p>
                 <li>Nombre: ${name}</li>
                 <li>Apellido: ${lastName}</li>
                 <li>Fecha de nacimiento: ${born}</li>
@@ -41,7 +41,7 @@ const putUserInfo = async (req, res, next) => {
                 <li>Provincia: ${province}</li>
                 <li>Código postal: ${postal}</li>
                 <li>Teléfono: ${phone}</li>
-                <p>Si usted no ha realizado dicha acción, por favor contáctenos inmediatamente.</p></br>
+                <p>Si usted no ha realizado dicha acción, por favor contáctenos inmediatamente.</p>;
                 `;
                 
                 await sendEmail({
