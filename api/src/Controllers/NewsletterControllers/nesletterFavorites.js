@@ -51,7 +51,7 @@ const newsProductFavorite = async (req, res, data) => {
                 </head>
                 <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
                 <h1> Usted se ha susbscrito a nuestros newsletter </h1>
-                <b><p>Gracias por suscribirse a nuestro canal de noticias con el email: ${email}, en dicho canal usted recibirá información sobre sus productos favoritos. </p></br>
+                <p>Gracias por suscribirse a nuestro canal de noticias con el email: ${email}, en dicho canal usted recibirá información sobre sus productos favoritos. </p>
                 `;
                 
                 sendEmail({
@@ -90,7 +90,7 @@ const newsProductFavorite = async (req, res, data) => {
                 </head>
                 <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
                 <h1> Usted se ha susbscrito a nuestros newsletter </h1>
-                <b><p>Gracias por suscribirse a nuestro canal de noticias con el email: ${email}, en dicho canal usted recibirá información sobre sus productos favoritos. </p></br>
+                <p>Gracias por suscribirse a nuestro canal de noticias con el email: ${email}, en dicho canal usted recibirá información sobre sus productos favoritos. </p>
                 `;
                 
                 sendEmail({

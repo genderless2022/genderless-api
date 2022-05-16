@@ -21,7 +21,7 @@ const putUserPassword = async (req, res, next) => {
             </head>
             <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
             <h1> Usted ha cambiado su contraseña </h1>
-            <b><p>${user.name} ${user.lastName} usted ha modificado su contraseña, si usted no ha realizado dicha actividad, por favor contacte inmediatamente con nosotros.</p></br>`;
+            <p>${user.name} ${user.lastName} usted ha modificado su contraseña, si usted no ha realizado dicha actividad, por favor contacte inmediatamente con nosotros.</p>`;
              
             await sendEmail({
               email: email,
