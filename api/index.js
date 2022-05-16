@@ -31,5 +31,5 @@ conn.sync({ force: false }).then(() => {
     console.log(`app is running on port ${process.env.PORT}`); // eslint-disable-line no-console
   });
 });
-// serverIo(http);
+
 socket(http)
