@@ -22,9 +22,9 @@ const { conn } = require('./src/db.js');
 const preloader = require('./src/preloader');
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(process.env.PORT, () => {
-    preloader();
+    // preloader();
     
     console.log(`app is running on port ${process.env.PORT}`); // eslint-disable-line no-console
   });
