@@ -28,7 +28,7 @@ const postUser = async (req, res, next) => {
                 phone,
                 password: passwordHash,
                 permission,
-                sendAddress
+                sendAddress: sendAddress || null
             });
 
             const token = await tokenSign(user);
