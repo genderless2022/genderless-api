@@ -22,7 +22,7 @@ const { conn } = require('./src/db.js');
 const preloader = require('./src/preloader');
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(process.env.PORT, () => {
      preloader();
     

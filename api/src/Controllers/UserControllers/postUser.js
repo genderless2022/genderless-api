@@ -5,7 +5,7 @@ const sendEmail = require ('../../utils/sendEmail');
 
 const postUser = async (req, res, next) => {
     try {
-        const {name,lastName, picture, born, dni, email, address, province, postal, phone, password, permission} = req.body;
+        const {name,lastName, picture, born, dni, email, address, province, postal, phone, password, permission,sendAddress} = req.body;
 
         let passwordHash = null;
         if(password){
@@ -28,6 +28,7 @@ const postUser = async (req, res, next) => {
                 phone,
                 password: passwordHash,
                 permission,
+                sendAddress
             });
 
             const token = await tokenSign(user);

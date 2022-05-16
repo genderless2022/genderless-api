@@ -3,13 +3,13 @@ const sendEmail = require ('../../utils/sendEmail');
 
 const putUserInfo = async (req, res, next) => {
     const {
-        name, lastName, email, picture, born, dni, address, province, postal, phone} = req.body;
+        name, lastName, email, picture, born, dni, address, province, postal, phone,sendAddress} = req.body;
     try {
         if (email) {
             console.log(email);
             const allUsers = await User.findAll();
             if (allUsers.length) {
-                const result = await User.update({name, lastName, picture, born, address, dni, province, postal, phone},
+                const result = await User.update({name, lastName, picture, born, address, dni, province, postal, phone, sendAddress}, 
                     {
                         where: {
                         email: email,
