@@ -4,6 +4,7 @@ const sendEmail = require ('../../utils/sendEmail');
 
 const putUserPassword = async (req, res, next) => {
     const {email, password} = req.body;
+    console.log('password',password)
     try {
         const user = await User.findOne({where:{email}});
         if (user) {
