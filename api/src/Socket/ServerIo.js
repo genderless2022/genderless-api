@@ -62,7 +62,7 @@ var socket = function (http){
             } else {
               io.to(socket.id).emit('message', {
                 name: 'Admin',
-                body: 'Lo Siento el admin no está conectado',
+                body: 'Lo Siento el admin no está conectado. Nuestro horario de atención es de Lunes a Sábados de 9 a 18 hs. Muchas gracias.',
               });
             }
           }
