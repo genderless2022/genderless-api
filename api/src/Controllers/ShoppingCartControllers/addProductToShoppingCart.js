@@ -1,7 +1,7 @@
 const {User, Product} = require('../../db');
 
 const addProductToShpppingCart = async(req,res, next)=>{
-    const {email, productId, productSize} = req.body;
+    const {email, productId, productSize, productQuantity} = req.body;
     try {
         const product = await Product.findOne({where: {id: productId}});
         if (!product) {
@@ -18,6 +18,7 @@ const addProductToShpppingCart = async(req,res, next)=>{
                     const addUser = await user.addProduct(product, {
                         through: {
                             size: productSize,
+                            quantity: productQuantity
                         }
                     });
                     res.status(200).json({email: user.email, userId: user.id, product, msg: 'Producto agregado al carrito'});
