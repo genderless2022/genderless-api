@@ -14,7 +14,7 @@ const putUserInfo = require('../Controllers/UserControllers/putUserInfo');
 router.put('/', putUserInfo);
 
 const putUserPassword = require('../Controllers/UserControllers/putUserPassw');
-router.put('/password', putUserPassword);
+router.put('/password', checkAuth, checkRoles(['admin', 'user']), putUserPassword);
 
 const login = require('../Controllers/UserControllers/loginUser');
 router.post('/login', login);
