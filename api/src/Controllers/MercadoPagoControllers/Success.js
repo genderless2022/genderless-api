@@ -5,6 +5,7 @@ const sendEmail = require ('../../utils/sendEmail');
 
 const paymentSuccess = async (req, res) => {
   const id = req.query.payment_id;
+  const email = req.query.email;
 
   const infoApi = await axios.get(
     "https://api.mercadopago.com/v1/payments/" + id,
@@ -47,7 +48,7 @@ const paymentSuccess = async (req, res) => {
         status: infoTotal.status,
         status_detail: infoTotal.status_detail,
         status_delivery: "En preparacion",
-        email: "lochicosdelgender@gmail.com",
+        email: email || "lochicosdelgender@gmail.com",
       };
       /* console.log(aux); */
       await Payment.create(aux);

@@ -23,6 +23,9 @@ module.exports = (sequelize) => {
         },
         total: {
             type: DataTypes.INTEGER
+        },
+        sendAddress: {
+            type: DataTypes.JSON
         }
         
 

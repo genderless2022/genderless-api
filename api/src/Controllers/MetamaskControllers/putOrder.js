@@ -1,15 +1,17 @@
 const { Order } = require("../../db");
+const User = require("../../models/User");
 const sendEmail = require ('../../utils/sendEmail');
 
 
 const putOrder = async (req, res) => {
-  const {payment_id, email, newStatus, statusDetail} = req.body;
+  const {payment_id, email, newStatus, statusDetail, sendAddress} = req.body;
   try{
-
+        let userFound = User.findOne({where: {email: email}}) 
       await Order.update(
         {
           status: newStatus || 'No status provided' ,
-          status_detail: statusDetail || 'No detail provided'
+          status_detail: statusDetail || 'No detail provided',
+          sendAddress: sendAddress
         },
         { where: 
             { payment_id: String(payment_id) 
