@@ -1,12 +1,13 @@
 const { Payment, Product } = require("../../db");
 const axios = require("axios");
-const auth = require("../../Middleware/roleAuth");
+var req_id = 1
 
 const paymentSuccess = async (req, res) => {
-  const id = req.query.payment_id;
+  const {payment_id, email, objeto} = req.query;
+/* console.log(payment_id, email, objeto); */
 
   const infoApi = await axios.get(
-    "https://api.mercadopago.com/v1/payments/" + id,
+    "https://api.mercadopago.com/v1/payments/" + payment_id,
     {
       headers: {
         Authorization:
@@ -14,7 +15,7 @@ const paymentSuccess = async (req, res) => {
       },
     }
   );
-  /* console.log(infoApi); */
+   /* console.log(infoApi); */
   const infoTotal = {
     items: infoApi.data.additional_info.items.map((item) => {
       return {
@@ -45,40 +46,51 @@ const paymentSuccess = async (req, res) => {
         total_paid_amount: infoTotal.total_paid_amount,
         status: infoTotal.status,
         status_detail: infoTotal.status_detail,
-        status_delivery: "En preparacion",
-        email: "lochicosdelgender@gmail.com",
+        status_delivery: "Creada",
+        email: "cambiamosporgender@gmail.com",
+        type_delivery: "objeto",
+        price_unit: infoTotal.items[i].price * infoTotal.items[i].quantity,
+        order_id: req_id
       };
+      
       /* console.log(aux); */
       await Payment.create(aux);
     }
   }
   /* console.log(infoTotal); */
-
-  infoTotal.items.map(async (pro) => {
-    const product = await Product.findOne({
-      where: { name: pro.name },
+  req_id += 1;
+  try {
+    infoTotal.items.map(async (pro) => {
+      const product = await Product.findOne({
+        where: { name: pro.name },
+      });
+      /* console.log(product.sales, pro.quantity ); */
+      const salesNum = Number(product.sales) + Number(pro.quantity);
+      const stockChange = product.dataValues.stock_by_size.map((elem) => {
+        if (elem.size === pro.size) {
+          let stock = {
+            size: pro.size,
+            stock: elem.stock - pro.quantity,
+          };
+          return stock;
+        } else return elem;
+      });
+      /* console.log(salesNum); */
+      await Product.update(
+        {
+          sales: salesNum,
+          stock_by_size: stockChange,
+        },
+        { where: { name: product.dataValues.name } }
+      );
+      /* console.log("logrado"); */
     });
-    /* console.log(product.sales, pro.quantity ); */
-    const salesNum = Number(product.sales) + Number(pro.quantity);
-    const stockChange = product.dataValues.stock_by_size.map((elem) => {
-      if (elem.size === pro.size) {
-        let stock = {
-          size: pro.size,
-          stock: elem.stock - pro.quantity,
-        };
-        return stock;
-      } else return elem;
-    });
-    /* console.log(salesNum); */
-    await Product.update(
-      {
-        sales: salesNum,
-        stock_by_size: stockChange,
-      },
-      { where: { name: product.dataValues.name } }
-    );
-    /* console.log("logrado"); */
-  });
+  } catch (error) {
+    res.status(404).send(error)
+  }
 };
 
 module.exports = paymentSuccess;
+
+/* agregar en la tabla payment una nueva columna que direccion del usuario y relacionar la tabla payment con
+la tabla de usuarios*/

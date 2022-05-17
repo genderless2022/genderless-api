@@ -1,10 +1,10 @@
 const { Product } = require("../../db");
 
 const stockRestored = async (req, res) => {
-  const { id, quantity, size } = req.body;
+  const { name, quantity, size } = req.body;
 
   const product = await Product.findOne({
-    where: { id: id },
+    where: { name: name },
   });
 
   const productCorrect = product.stock_by_size.map((elem) => {
@@ -23,7 +23,7 @@ const stockRestored = async (req, res) => {
     {
       stock_by_size: productCorrect,
     },
-    { where: { id: id } }
+    { where: { name: name } }
   );
   res.send("restaurado");
 };
