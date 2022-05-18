@@ -5,7 +5,7 @@ const sendEmail = require ('../../utils/sendEmail');
 
 const postUser = async (req, res, next) => {
     try {
-        const {name,lastName, picture, born, dni, email, address, province, postal, phone, password, permission} = req.body;
+        const {name,lastName, picture, born, dni, email, address, province, postal, phone, password, permission,sendAddress} = req.body;
 
         let passwordHash = null;
         if(password){
@@ -13,9 +13,8 @@ const postUser = async (req, res, next) => {
         }
 
         let user = await User.findOne({where:{email}});
-        let searchDNI = await User.findOne({where:{dni}});
 
-        if(!user && !searchDNI){
+        if(!user){
             user = await User.create({
                 name,
                 lastName,
@@ -29,6 +28,7 @@ const postUser = async (req, res, next) => {
                 phone,
                 password: passwordHash,
                 permission,
+                sendAddress: sendAddress || null
             });
 
             const token = await tokenSign(user);
@@ -36,25 +36,25 @@ const postUser = async (req, res, next) => {
             let mensaje = `
             <head>
             <style>
-             h1 { color: #e7bf50 }
-             p { color: #0e1428; font-size: 15px}
+                h1 { color: #e7bf50 }
+                p { color: #0e1428; font-size: 15px}
             </style>
             </head>
             <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='23%' height='23%'/>
             <h1>Bienvenido ${name} ${lastName}</h1>
-            <b><p>Gracias por crear una cuenta con nosotros</p></br>`;
-             
+            <p>Gracias por crear una cuenta con nosotros</p>`;
+            
             await sendEmail({
-              email: email,
-              subject: 'Registro de cuenta',
-              mensaje,
+                email: email,
+                subject: 'Registro de cuenta',
+                mensaje,
             });
 
             
             res.status(200).json({msg: 'usuario creado con exito', token, name, lastName, email});
             
         } else {
-            user? res.status(400).json({msg: `el email: ${email} ya existe`}) : res.status(400).json({msg: `el dni: ${dni} ya existe`});
+            res.status(400).json({msg: `el email: ${email} ya existe`});
         }
                     
     } catch (error) {

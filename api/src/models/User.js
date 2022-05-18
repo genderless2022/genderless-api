@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
         },
 
         born: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY
         },
 
         dni: {
@@ -56,6 +56,12 @@ module.exports = (sequelize) => {
         permission: {
             type: DataTypes.STRING,
             defaultValue: 'user'
+        },
+
+        sendAddress:{
+        type:DataTypes.JSON,
+        //defaultValue:{name:'',lastName:'',address:'',province:'',postal:'',phone:''}
+      
         }
     });
 };

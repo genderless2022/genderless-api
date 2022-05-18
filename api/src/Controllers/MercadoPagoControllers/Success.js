@@ -1,9 +1,11 @@
 const { Payment, Product } = require("../../db");
 const axios = require("axios");
-const auth = require("../../Middleware/roleAuth")
+const auth = require("../../Middleware/roleAuth");
+const sendEmail = require ('../../utils/sendEmail');
 
 const paymentSuccess = async (req, res) => {
   const id = req.query.payment_id;
+  const email = req.query.email;
 
   const infoApi = await axios.get(
     "https://api.mercadopago.com/v1/payments/" + id,
@@ -29,14 +31,11 @@ const paymentSuccess = async (req, res) => {
     status: infoApi.data.status,
     status_detail: infoApi.data.status_detail,
   };
-  console.log(infoApi.data.additional_info.items);
-//---------------------------------------------
+  //---------------------------------------------
 
+  /* logica con token de usuario */
 
-/* logica con token de usuario */
-
-
-//---------------------------------------------
+  //---------------------------------------------
   if (infoTotal) {
     for (let i = 0; i < infoTotal.items.length; i++) {
       let aux = {
@@ -49,41 +48,65 @@ const paymentSuccess = async (req, res) => {
         status: infoTotal.status,
         status_detail: infoTotal.status_detail,
         status_delivery: "En preparacion",
-        email: "lochicosdelgender@gmail.com"
+        email: email || "lochicosdelgender@gmail.com",
       };
       /* console.log(aux); */
       await Payment.create(aux);
     }
   }
   /* console.log(infoTotal); */
+  // let mensaje = `
+  //           <head>
+  //           <style>
+  //               h1 { color: #e7bf50 }
+  //               p { color: #0e1428; font-size: 15px}
+  //               h6 { color: #0e1428; font-size: 17px}
+  //           </style>
+  //           </head>
+  //           <h1> ${name} ${lastName}</h1>
+  //           <b><p>Usted ha comprado los siguientes productos:</p></br>
+  //           <h6>${item.title}</h6>
+  //           <img src="${item.picture_url}" alt='producto' width='200px'/>
+  //           <h6>${item.description}</h6>
+  //           <h6>${item.unit_price}</h6>
+  //           <h6>${item.quantity}</h6>
+  //           <h6>${infoTotal.total_paid_amount}</h6>
+  //           <p>Gracias por su compra</p>
+  //           <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='23%' height='23%'/>
+  //           `;
+            
+  //           await sendEmail({
+  //               email: email,
+  //               subject: 'Confirmación de compra',
+  //               mensaje,
+  //           });
 
-  
 
-  for (let i = 0; i < infoTotal.items.length; i++) {
+  infoTotal.items.map(async (pro) => {
     const product = await Product.findOne({
-      where: { name: infoTotal.items[i].name },
+      where: { name: pro.name },
     });
-    let stockChange = [];
-    for (let j = 0; j < product.dataValues.stock_by_size.length; j++) {
-      if (
-        product.dataValues.stock_by_size[j].size === infoTotal.items[i].size
-      ) {
-        let stock = product.dataValues.stock_by_size[j].stock;
-        stock = stock -= infoTotal.items[i].quantity;
-        let newStock = { size: infoTotal.items[i].size, stock: stock };
-        /* console.log(newStock); */
-        stockChange.push(newStock);
-      } else {
-        stockChange.push(product.dataValues.stock_by_size[j]);
-      }
-    }
+    /* console.log(product.sales, pro.quantity ); */
+    const salesNum = Number(product.sales) + Number(pro.quantity);
+    const stockChange = product.dataValues.stock_by_size.map((elem) => {
+      if (elem.size === pro.size) {
+        let stock = {
+          size: pro.size,
+          stock: elem.stock - pro.quantity,
+        };
+        return stock;
+      } else return elem;
+    });
+    /* console.log(salesNum); */
     await Product.update(
       {
+        sales: salesNum,
         stock_by_size: stockChange,
       },
       { where: { name: product.dataValues.name } }
     );
-  }
+    /* console.log("logrado"); */
+  });
 };
 
 module.exports = paymentSuccess;

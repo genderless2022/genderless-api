@@ -1,7 +1,7 @@
 const {User, Product} = require('../../db');
 
 const addReview = async (req, res, next) => {
-    const {email, productTitle} = req.body;
+    const {email, productTitle, name, lastname} = req.body;
     try {
         const product = await Product.findOne({where: {name: productTitle}});
         
@@ -12,6 +12,8 @@ const addReview = async (req, res, next) => {
                     
                 comment: req.body.comment,
                 rating: req.body.rating,
+                name,
+                lastname,
                 
             });
             const user = await User.findOne({where: {email}});
@@ -22,7 +24,7 @@ const addReview = async (req, res, next) => {
                 res.status(201).json({
                     msg: 'Review creada',
                     review,
-                    
+                   
                 });
             }
         }
