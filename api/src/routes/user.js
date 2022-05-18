@@ -8,10 +8,10 @@ const postUser = require('../Controllers/UserControllers/postUser');
 router.post('/', postUser);
 
 const getUsers = require('../Controllers/UserControllers/getUsers');
-router.get('/', getUsers);
+router.get('/', checkAuth, checkRoles(['admin']),getUsers);
 
 const putUserInfo = require('../Controllers/UserControllers/putUserInfo');
-router.put('/', putUserInfo);
+router.put('/', checkAuth, checkRoles(['admin', 'user']), putUserInfo);
 
 const putUserPassword = require('../Controllers/UserControllers/putUserPassw');
 router.put('/password', checkAuth, checkRoles(['admin', 'user']), putUserPassword);
@@ -23,10 +23,10 @@ const logout = require('../Controllers/UserControllers/logoutUser');
 router.post('/logout', logout);
 
 const getUserInfo = require('../Controllers/UserControllers/getUserInfo');
-router.get('/email/:email',  getUserInfo);
+router.get('/email/:email', checkAuth, checkRoles(['admin', 'user']), getUserInfo);
 
 const putUserRol = require('../Controllers/UserControllers/putUserRol');
-router.put('/rol', putUserRol);
+router.put('/rol', checkAuth, checkRoles(['admin']), putUserRol);
 
 const deleteUser = require('../Controllers/UserControllers/deleteUser');
 router.delete('/:email', deleteUser);
@@ -60,10 +60,10 @@ const userForgotPassword = require('../Controllers/UserControllers/userForgotPas
 router.post('/forgotpassword', userForgotPassword);
 
 const addReview = require('../Controllers/ReviewsControllers/addReview');
-router.post('/review', addReview);
+router.post('/review', checkAuth, checkRoles(['admin', 'user']), addReview);
 
 const getReviews = require('../Controllers/ReviewsControllers/getReviews');
-router.get('/reviews', getReviews);
+router.get('/reviews', checkAuth, checkRoles(['admin', 'user']), getReviews);
 
 const getReview = require('../Controllers/ReviewsControllers/getReview');
 router.get('/review/:productId', getReview);

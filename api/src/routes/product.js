@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
+const checkAuth = require('../Middleware/auth');
+const checkRoles = require('../Middleware/roleAuth');
+
 const getProduct= require('../Controllers/ProductControllers/getProduct');
 const postProduct = require("../Controllers/ProductControllers/postProduct");
 const putProduct = require("../Controllers/ProductControllers/putProduct");
@@ -20,7 +23,7 @@ router.get("/marca/:marca", getProductMarca);
 router.get("/id/:id", getProductById);
 router.get("/name/:name", getProductByName);
 router.get('/', getProduct);
-router.post("/", postProduct);
-router.put("/putproduct", putProduct);
+router.post("/", checkAuth, checkRoles(['admin']),postProduct);
+router.put("/putproduct", checkAuth, checkRoles(['admin']), putProduct);
 
 module.exports = router;
