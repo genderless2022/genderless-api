@@ -23,7 +23,7 @@ const createPreference = (req, res) => {
     items: [],
     back_urls: {
       success: "http://localhost:3000/success",
-      failure: "http://localhost:3000/success",
+      failure: "http://localhost:3000/home",
       pending: "http://localhost:3000/success",
     },
     auto_return: "approved",
