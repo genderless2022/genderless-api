@@ -1,10 +1,12 @@
 const { Payment, Product } = require("../../db");
 const axios = require("axios");
-var req_id = 1
+const auth = require("../../Middleware/roleAuth");
+const sendEmail = require("../../utils/sendEmail");
+var req_id = 1;
 
 const paymentSuccess = async (req, res) => {
-  const {payment_id, email, objeto} = req.query;
-/* console.log(payment_id, email, objeto); */
+  const id = req.query.payment_id;
+  const email = req.query.email;
 
   const infoApi = await axios.get(
     "https://api.mercadopago.com/v1/payments/" + payment_id,
@@ -15,7 +17,7 @@ const paymentSuccess = async (req, res) => {
       },
     }
   );
-   /* console.log(infoApi); */
+  /* console.log(infoApi); */
   const infoTotal = {
     items: infoApi.data.additional_info.items.map((item) => {
       return {
@@ -46,18 +48,44 @@ const paymentSuccess = async (req, res) => {
         total_paid_amount: infoTotal.total_paid_amount,
         status: infoTotal.status,
         status_detail: infoTotal.status_detail,
-        status_delivery: "Creada",
-        email: "cambiamosporgender@gmail.com",
+        status_delivery: "En preparacion",
+        email: email || "lochicosdelgender@gmail.com",
         type_delivery: "objeto",
         price_unit: infoTotal.items[i].price * infoTotal.items[i].quantity,
-        order_id: req_id
+        order_id: req_id,
       };
-      
+
       /* console.log(aux); */
       await Payment.create(aux);
     }
   }
   /* console.log(infoTotal); */
+  let mensaje = `
+            <head>
+            <style>
+                h1 { color: #e7bf50 }
+                p { color: #0e1428; font-size: 15px}
+                h6 { color: #0e1428; font-size: 17px}
+            </style>
+            </head>
+            <h1> ${name} ${lastName}</h1>
+            <b><p>Usted ha comprado los siguientes productos:</p></br>
+            <h6>${item.title}</h6>
+            <img src="${item.picture_url}" alt='producto' width='200px'/>
+            <h6>${item.description}</h6>
+            <h6>${item.unit_price}</h6>
+            <h6>${item.quantity}</h6>
+            <h6>${infoTotal.total_paid_amount}</h6>
+            <p>Gracias por su compra</p>
+            <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='23%' height='23%'/>
+            `;
+
+  await sendEmail({
+    email: email,
+    subject: "Confirmación de compra",
+    mensaje,
+  });
+
   req_id += 1;
   try {
     infoTotal.items.map(async (pro) => {
@@ -83,10 +111,10 @@ const paymentSuccess = async (req, res) => {
         },
         { where: { name: product.dataValues.name } }
       );
-      /* console.log("logrado"); */
+      /////////////
     });
   } catch (error) {
-    res.status(404).send(error)
+    res.status(404).send(error);
   }
 };
 

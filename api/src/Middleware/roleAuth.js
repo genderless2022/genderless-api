@@ -6,7 +6,7 @@ const checkRoles = (roles) => async (req, res, next) => {
         const token = req.headers.authorization.split(' ').pop();
         if(token) {
             const tokenData = await verifyToken(token);
-            //console.log(tokenData, 'tokenData');
+            // console.log(tokenData, 'tokenData');
             const userData = await User.findOne({where:{id: tokenData.id}});
             if([].concat(roles).includes(userData.permission)){
                 next();

@@ -5,7 +5,7 @@ const sendEmail = require ('../../utils/sendEmail');
 
 const postUser = async (req, res, next) => {
     try {
-        const {name,lastName, picture, born, dni, email, address, province, postal, phone, password, permission} = req.body;
+        const {name,lastName, picture, born, dni, email, address, province, postal, phone, password, permission,sendAddress} = req.body;
 
         let passwordHash = null;
         if(password){
@@ -28,6 +28,7 @@ const postUser = async (req, res, next) => {
                 phone,
                 password: passwordHash,
                 permission,
+                sendAddress: sendAddress || null
             });
 
             const token = await tokenSign(user);
@@ -41,7 +42,7 @@ const postUser = async (req, res, next) => {
             </head>
             <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='23%' height='23%'/>
             <h1>Bienvenido ${name} ${lastName}</h1>
-            <b><p>Gracias por crear una cuenta con nosotros</p></br>`;
+            <p>Gracias por crear una cuenta con nosotros</p>`;
             
             await sendEmail({
                 email: email,

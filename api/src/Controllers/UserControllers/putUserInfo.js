@@ -3,13 +3,13 @@ const sendEmail = require ('../../utils/sendEmail');
 
 const putUserInfo = async (req, res, next) => {
     const {
-        name, lastName, email, picture, born, dni, address, province, postal, phone} = req.body;
+        name, lastName, email, picture, born, dni, address, province, postal, phone,sendAddress} = req.body;
     try {
         if (email) {
             console.log(email);
             const allUsers = await User.findAll();
             if (allUsers.length) {
-                const result = await User.update({name, lastName, picture, born, address, dni, province, postal, phone},
+                const result = await User.update({name, lastName, picture, born, address, dni, province, postal, phone, sendAddress}, 
                     {
                         where: {
                         email: email,
@@ -32,7 +32,7 @@ const putUserInfo = async (req, res, next) => {
                 </head>
                 <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
                 <h1> ${name} ${lastName} ha modificado su información </h1>
-                <b><p>Sus datos han sido modificado por la siguiente información:</p></br>
+                <p>Sus datos han sido modificado con la siguiente información:</p>
                 <li>Nombre: ${name}</li>
                 <li>Apellido: ${lastName}</li>
                 <li>Fecha de nacimiento: ${born}</li>
@@ -41,7 +41,7 @@ const putUserInfo = async (req, res, next) => {
                 <li>Provincia: ${province}</li>
                 <li>Código postal: ${postal}</li>
                 <li>Teléfono: ${phone}</li>
-                <p>Si usted no ha realizado dicha acción, por favor contáctenos inmediatamente.</p></br>
+                <p>Si usted no ha realizado dicha acción, por favor contáctenos inmediatamente.</p>;
                 `;
                 
                 await sendEmail({

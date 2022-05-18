@@ -4,8 +4,10 @@ const sendEmail = require ('../../utils/sendEmail');
 
 const putUserPassword = async (req, res, next) => {
     const {email, password} = req.body;
+    // console.log('<<password',password)
     try {
         const user = await User.findOne({where:{email}});
+        // console.log(user,'<<user')
         if (user) {
             const updatePassword = await user.update({password: await bcrypt.hash(password, 10)},
                 
@@ -20,7 +22,7 @@ const putUserPassword = async (req, res, next) => {
             </head>
             <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='20%' height='20%'/>
             <h1> Usted ha cambiado su contraseña </h1>
-            <b><p>${user.name} ${user.lastName} usted ha modificado su contraseña, si usted no ha realizado dicha actividad, por favor contacte inmediatamente con nosotros.</p></br>`;
+            <p>${user.name} ${user.lastName} usted ha modificado su contraseña, si usted no ha realizado dicha actividad, por favor contacte inmediatamente con nosotros.</p>`;
              
             await sendEmail({
               email: email,

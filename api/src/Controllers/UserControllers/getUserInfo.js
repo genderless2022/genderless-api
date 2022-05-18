@@ -3,7 +3,7 @@ const {User} = require('../../db');
 const userInfo = async (req, res, next) => {
     try {
         const {email} = req.params;
-        const userFound = await User.findOne({where: {email}, attributes: ['name', 'lastName', 'born', 'dni', 'email', 'address', 'province', 'postal', 'phone']});
+        const userFound = await User.findOne({where: {email}, attributes: ['name', 'lastName', 'born', 'dni', 'email', 'address', 'province', 'postal', 'phone','sendAddress']});
         if(userFound) {
             res.status(200).json({msg:'Usuario Encontrado', user: userFound});
         } else {

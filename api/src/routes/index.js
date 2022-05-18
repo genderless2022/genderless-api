@@ -5,8 +5,10 @@ const { Router } = require("express");
 const router = Router();
 
 const mercado = require("./mercadopago")
+const metamask = require("./metamask")
 
 router.use("/mercado", mercado)
+router.use("/metamask", metamask)
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
