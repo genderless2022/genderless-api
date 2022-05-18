@@ -4,6 +4,7 @@ const runNews = require("../../utils/usuariosNews.js")
 
 const putProduct = async (req, res, next) => {
     const {id, description,stock_by_size, price, discount, image, brand, disabled, category } = req.body;
+    console.log(id, 'putprod')
 
     const allProducts = await Product.findAll();
     if (allProducts.length){

@@ -3,7 +3,7 @@ const {verifyToken} = require('./generateToken');
 const checkAuth = async (req, res, next) => {
     try {
         const token = req.headers.authorization.split(' ').pop();
-        console.log(token, 'auth')
+        // console.log(token, 'auth')
         const tokenData = await verifyToken(token);
         if(tokenData === undefined){
             res.status(401).json({msg: 'No esta autorizado'});

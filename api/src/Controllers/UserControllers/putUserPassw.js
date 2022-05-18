@@ -4,9 +4,10 @@ const sendEmail = require ('../../utils/sendEmail');
 
 const putUserPassword = async (req, res, next) => {
     const {email, password} = req.body;
-    console.log('password',password)
+    // console.log('<<password',password)
     try {
         const user = await User.findOne({where:{email}});
+        // console.log(user,'<<user')
         if (user) {
             const updatePassword = await user.update({password: await bcrypt.hash(password, 10)},
                 
