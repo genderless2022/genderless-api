@@ -9,7 +9,7 @@ const paymentSuccess = async (req, res) => {
   const email = req.query.email;
 
   const infoApi = await axios.get(
-    "https://api.mercadopago.com/v1/payments/" + payment_id,
+    "https://api.mercadopago.com/v1/payments/" + id,
     {
       headers: {
         Authorization:
@@ -60,7 +60,7 @@ const paymentSuccess = async (req, res) => {
     }
   }
   /* console.log(infoTotal); */
-  let mensaje = `
+ /*  let mensaje = `
             <head>
             <style>
                 h1 { color: #e7bf50 }
@@ -84,7 +84,7 @@ const paymentSuccess = async (req, res) => {
     email: email,
     subject: "Confirmación de compra",
     mensaje,
-  });
+  }); */
 
   req_id += 1;
   try {
