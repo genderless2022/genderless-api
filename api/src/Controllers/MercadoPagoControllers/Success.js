@@ -55,31 +55,31 @@ const paymentSuccess = async (req, res) => {
     }
   }
   /* console.log(infoTotal); */
-  let mensaje = `
-            <head>
-            <style>
-                h1 { color: #e7bf50 }
-                p { color: #0e1428; font-size: 15px}
-                h6 { color: #0e1428; font-size: 17px}
-            </style>
-            </head>
-            <h1> ${name} ${lastName}</h1>
-            <b><p>Usted ha comprado los siguientes productos:</p></br>
-            <h6>${item.title}</h6>
-            <img src="${item.picture_url}" alt='producto' width='200px'/>
-            <h6>${item.description}</h6>
-            <h6>${item.unit_price}</h6>
-            <h6>${item.quantity}</h6>
-            <h6>${infoTotal.total_paid_amount}</h6>
-            <p>Gracias por su compra</p>
-            <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='23%' height='23%'/>
-            `;
+  // let mensaje = `
+  //           <head>
+  //           <style>
+  //               h1 { color: #e7bf50 }
+  //               p { color: #0e1428; font-size: 15px}
+  //               h6 { color: #0e1428; font-size: 17px}
+  //           </style>
+  //           </head>
+  //           <h1> ${name} ${lastName}</h1>
+  //           <b><p>Usted ha comprado los siguientes productos:</p></br>
+  //           <h6>${item.title}</h6>
+  //           <img src="${item.picture_url}" alt='producto' width='200px'/>
+  //           <h6>${item.description}</h6>
+  //           <h6>${item.unit_price}</h6>
+  //           <h6>${item.quantity}</h6>
+  //           <h6>${infoTotal.total_paid_amount}</h6>
+  //           <p>Gracias por su compra</p>
+  //           <img src='https://i.imgur.com/IfdXZqt.jpg' alt='logo' width='23%' height='23%'/>
+  //           `;
             
-            await sendEmail({
-                email: email,
-                subject: 'Confirmación de compra',
-                mensaje,
-            });
+  //           await sendEmail({
+  //               email: email,
+  //               subject: 'Confirmación de compra',
+  //               mensaje,
+  //           });
 
 
   infoTotal.items.map(async (pro) => {
