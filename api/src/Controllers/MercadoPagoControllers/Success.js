@@ -1,7 +1,8 @@
 const { Payment, Product } = require("../../db");
 const axios = require("axios");
 const auth = require("../../Middleware/roleAuth");
-const sendEmail = require ('../../utils/sendEmail');
+const sendEmail = require("../../utils/sendEmail");
+var req_id = 1;
 
 const paymentSuccess = async (req, res) => {
   const id = req.query.payment_id;
@@ -49,7 +50,11 @@ const paymentSuccess = async (req, res) => {
         status_detail: infoTotal.status_detail,
         status_delivery: "En preparacion",
         email: email || "lochicosdelgender@gmail.com",
+        type_delivery: "objeto",
+        price_unit: infoTotal.items[i].price * infoTotal.items[i].quantity,
+        order_id: req_id,
       };
+
       /* console.log(aux); */
       await Payment.create(aux);
     }
@@ -81,32 +86,45 @@ const paymentSuccess = async (req, res) => {
   //               mensaje,
   //           });
 
+ /*  await sendEmail({
+    email: email,
+    subject: "Confirmación de compra",
+    mensaje,
+  });  */
 
-  infoTotal.items.map(async (pro) => {
-    const product = await Product.findOne({
-      where: { name: pro.name },
+  req_id += 1;
+  try {
+    infoTotal.items.map(async (pro) => {
+      const product = await Product.findOne({
+        where: { name: pro.name },
+      });
+      /* console.log(product.sales, pro.quantity ); */
+      const salesNum = Number(product.sales) + Number(pro.quantity);
+      const stockChange = product.dataValues.stock_by_size.map((elem) => {
+        if (elem.size === pro.size) {
+          let stock = {
+            size: pro.size,
+            stock: elem.stock - pro.quantity,
+          };
+          return stock;
+        } else return elem;
+      });
+      /* console.log(salesNum); */
+      await Product.update(
+        {
+          sales: salesNum,
+          stock_by_size: stockChange,
+        },
+        { where: { name: product.dataValues.name } }
+      );
+      /////////////
     });
-    /* console.log(product.sales, pro.quantity ); */
-    const salesNum = Number(product.sales) + Number(pro.quantity);
-    const stockChange = product.dataValues.stock_by_size.map((elem) => {
-      if (elem.size === pro.size) {
-        let stock = {
-          size: pro.size,
-          stock: elem.stock - pro.quantity,
-        };
-        return stock;
-      } else return elem;
-    });
-    /* console.log(salesNum); */
-    await Product.update(
-      {
-        sales: salesNum,
-        stock_by_size: stockChange,
-      },
-      { where: { name: product.dataValues.name } }
-    );
-    /* console.log("logrado"); */
-  });
+  } catch (error) {
+    res.status(404).send(error);
+  }
 };
 
 module.exports = paymentSuccess;
+
+/* agregar en la tabla payment una nueva columna que direccion del usuario y relacionar la tabla payment con
+la tabla de usuarios*/
