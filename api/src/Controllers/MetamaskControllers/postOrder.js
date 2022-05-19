@@ -1,5 +1,5 @@
-const { Order, User } = require('../../db');
 const mailCompra = require ('../../utils/mailCompra');
+const { Order, User, Product } = require('../../db');
 
 
 const postOrder = async (req, res, next) => {
@@ -8,7 +8,7 @@ const postOrder = async (req, res, next) => {
         let orderExisting = await Order.findOne({where: {payment_id: String(payment_id)} })
         let userFound = await User.findOne({where: {email: email}})
         
-       /*  if (!orderExisting && userFound){ */
+        if (!orderExisting && userFound){
             // let userFound = await User.findOne({where: { email: email }})
             // let productList = await userFound.getProducts()
             productList.map(async (pro) => {
@@ -46,9 +46,9 @@ const postOrder = async (req, res, next) => {
                 }).then( createdOrder => {
                     res.send(createdOrder)
                 } ) 
-                           
                 mailCompra(email)
             }
+        }
             /* else{
                 res.send('No hay productos en el shopping car o no existe el usuario')
             }
