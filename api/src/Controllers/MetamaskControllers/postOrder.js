@@ -1,4 +1,5 @@
 const { Order, User } = require('../../db');
+const mailCompra = require ('../../utils/mailCompra');
 
 
 const postOrder = async (req, res, next) => {
@@ -22,7 +23,8 @@ const postOrder = async (req, res, next) => {
                 }).then( createdOrder => {
                     res.send(createdOrder)
                 } ) 
-
+                           
+                mailCompra(email)
             }
             else{
                 res.send('No hay productos en el shopping car o no existe el usuario')
