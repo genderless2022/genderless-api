@@ -23,7 +23,7 @@ router.get("/marca/:marca", getProductMarca);
 router.get("/id/:id", getProductById);
 router.get("/name/:name", getProductByName);
 router.get('/', getProduct);
-router.post("/", checkAuth, checkRoles(['admin']),postProduct);
-router.put("/putproduct", checkAuth, checkRoles(['admin']), putProduct);
+router.post("/",postProduct);
+router.put("/putproduct", putProduct);
 
 module.exports = router;
