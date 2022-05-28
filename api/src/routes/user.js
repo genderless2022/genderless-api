@@ -8,7 +8,7 @@ const postUser = require('../Controllers/UserControllers/postUser');
 router.post('/', postUser);
 
 const getUsers = require('../Controllers/UserControllers/getUsers');
-router.get('/', checkAuth, checkRoles(['admin']),getUsers);
+router.get('/', getUsers);
 
 const putUserInfo = require('../Controllers/UserControllers/putUserInfo');
 router.put('/', checkAuth, checkRoles(['admin', 'user']), putUserInfo);
@@ -30,7 +30,6 @@ router.put('/rol', checkAuth, checkRoles(['admin']), putUserRol);
 
 const deleteUser = require('../Controllers/UserControllers/deleteUser');
 router.delete('/:email', deleteUser);
-router.get('/info', checkAuth, checkRoles(['admin', 'user']), getUserInfo);
 
 const addProductToFavorites = require('../Controllers/FavoritesControllers/addProductToFavorites');
 router.post('/favorites', addProductToFavorites);
