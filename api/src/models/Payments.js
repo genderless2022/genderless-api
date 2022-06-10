@@ -29,11 +29,20 @@ module.exports = (sequelize) => {
     status_detail: {
       type: DataTypes.STRING,
     },
+    type_delivery: {
+      type: DataTypes.JSON,
+    },
     status_delivery: {
       type: DataTypes.STRING,
     },
     email: {
       type: DataTypes.STRING,
+    },
+    price_unit: {
+      type: DataTypes.FLOAT,
+    },
+    order_id: {
+      type: DataTypes.INTEGER,
     }
     /* id_user: {
         type: DataTypes.INTEGER

@@ -26,7 +26,7 @@ const comprasEmail = async (email) => {
         `;
         const mailOptions = {
             from: `${process.env.FROM_NAME} <${process.env.FROM_EMAIL}>`,
-            to: "jofregf@gmail.com",
+            to: email,
             subject: "Confirmación de compra",
             html: mensaje,
         };

@@ -9,7 +9,9 @@ const historial = require("../Controllers/MercadoPagoControllers/getUserHistory"
 const amount = require("../Controllers/MercadoPagoControllers/getSellProducts")
 const price = require("../Controllers/MercadoPagoControllers/getTotalVentas");
 const restore = require("../Controllers/MercadoPagoControllers/RestoreStock");
+const view = require("../Controllers/MercadoPagoControllers/getView");
 
+router.get("/view/:id", view)
 router.put("/restore", restore)
 router.get("/price", price)
 router.get("/amount", amount)

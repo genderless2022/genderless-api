@@ -164,7 +164,8 @@ var data = [
         image: 'https://i.imgur.com/KqXhTfc.jpg',
         category: 'Remera',
         brand: 'Independent', 
-        disabled: false
+        disabled: false,
+        sales: 0,
     },
 
     {   
@@ -176,7 +177,8 @@ var data = [
         image: 'https://i.imgur.com/6fa28r1.jpg',
         category: 'Calzado',
         brand: 'Vans',
-        disabled: false
+        disabled: false,
+        sales: 0,
     },
 
     {   
@@ -188,7 +190,8 @@ var data = [
         image: 'https://i.imgur.com/vhs9p2D.jpg',
         category: 'Calzado',
         brand: 'DC',
-        disabled: false
+        disabled: false,
+        sales: 0,
     },
 
     {   
@@ -200,7 +203,8 @@ var data = [
         image: 'https://i.imgur.com/d34ez9N.jpg',
         category: 'Pantalon',
         brand: 'Rip Curl', 
-        disabled: false
+        disabled: false,
+        sales: 0,
     },
 
     {   
@@ -212,7 +216,8 @@ var data = [
         image: 'https://i.imgur.com/oi7uu3x.jpg',
         category: 'Pantalon',
         brand: 'Quiksilver', 
-        disabled: false
+        disabled: false,
+        sales: 0,
     },
 
     {   
@@ -224,7 +229,8 @@ var data = [
         image: 'https://i.imgur.com/aP0Qli2.jpg',
         category: 'Jean',
         brand: 'Rip Curl', 
-        disabled: false
+        disabled: false,
+        sales: 0,
     },
 
     {   
@@ -236,7 +242,8 @@ var data = [
         image: 'https://i.imgur.com/2ZRMxc9.jpg',
         category: 'Jean',
         brand: 'Rip Curl',
-        disabled: false
+        disabled: false,
+        sales: 0,
     },
 
     {   
@@ -248,7 +255,8 @@ var data = [
         image: 'https://i.imgur.com/I3xQN9d.jpg',
         category: 'Buzo',
         brand: 'Santa Cruz',
-        disabled: false
+        disabled: false,
+        sales: 0,
     },
 
     {   
@@ -286,7 +294,8 @@ var data = [
         image: 'https://i.imgur.com/cBfJxL2.jpg',
         category: 'Camisas',
         brand: 'Y Tú Quique?', 
-        disabled: false
+        disabled: false,
+        sales: 0,
     },
 
     {   
@@ -376,7 +385,8 @@ var data = [
         image: 'https://i.imgur.com/cUeho8k.jpg',
         category: 'Calzado',
         brand: 'Converse',
-        disabled: false
+        disabled: false,
+        sales: 0,
     },
 
     {   
@@ -401,7 +411,8 @@ var data = [
         image: 'https://i.imgur.com/TzUnsVT.jpg',
         category: 'Remera',
         brand: 'DC', 
-        disabled: false
+        disabled: false,
+        sales: 0,
     },
 
     {   
@@ -413,7 +424,8 @@ var data = [
         image: 'https://i.imgur.com/meSScvH.jpg',
         category: 'Campera',
         brand: 'Y Tú Quique?',
-        disabled: false
+        disabled: false,
+        sales: 0,
     },
 
     {   
@@ -438,7 +450,8 @@ var data = [
         image: 'https://i.imgur.com/VoOvuPR.jpg',
         category: 'Camisas',
         brand: 'Vulk', 
-        disabled: false
+        disabled: false,
+        sales: 0,
     },
 
     {   
@@ -581,7 +594,8 @@ var data = [
         image: 'https://i.imgur.com/PJ7D1ec.jpg',
         category: 'Calzado',
         brand: 'Converse',
-        disabled: false
+        disabled: false,
+        sales: 0,
     },
 
     {   
