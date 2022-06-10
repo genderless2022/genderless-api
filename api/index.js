@@ -24,11 +24,11 @@ const preloader = require('./src/preloader');
 const serverIo = require('./src/Socket/ServerIo');
 const socket = require('./src/Socket/ServerIo');
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   http.listen(process.env.PORT, () => {
-   preloader();
-    
-    console.log(`app is running on port ${process.env.PORT}`); // eslint-disable-line no-console
+  //  preloader();
+   
+   console.log(`app is running on port ${process.env.PORT}`); // eslint-disable-line no-console
   });
 });
 

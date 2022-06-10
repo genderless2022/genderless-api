@@ -10,7 +10,7 @@ const tokenSign = async (user) => {
             },
             process.env.KEY_TOKEN,
             {
-                expiresIn: '1h',
+                expiresIn: '1d',
             },
         )
         return token;

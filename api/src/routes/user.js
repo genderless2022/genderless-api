@@ -23,7 +23,7 @@ const logout = require('../Controllers/UserControllers/logoutUser');
 router.post('/logout', logout);
 
 const getUserInfo = require('../Controllers/UserControllers/getUserInfo');
-router.get('/email/:email', checkAuth, checkRoles(['admin', 'user']), getUserInfo);
+router.get('/email/:email',  checkAuth, checkRoles(['user', 'admin']), getUserInfo);
 
 const putUserRol = require('../Controllers/UserControllers/putUserRol');
 router.put('/rol', checkAuth, checkRoles(['admin']), putUserRol);
@@ -59,7 +59,7 @@ const userForgotPassword = require('../Controllers/UserControllers/userForgotPas
 router.post('/forgotpassword', userForgotPassword);
 
 const addReview = require('../Controllers/ReviewsControllers/addReview');
-router.post('/review', checkAuth, checkRoles(['admin', 'user']), addReview);
+router.post('/review',  addReview);
 
 const getReviews = require('../Controllers/ReviewsControllers/getReviews');
 router.get('/reviews', checkAuth, checkRoles(['admin', 'user']), getReviews);
